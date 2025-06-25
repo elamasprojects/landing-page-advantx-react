@@ -2,6 +2,7 @@
 import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import ProcessSteps from '../components/ProcessSteps';
+import AutomationAssessment from '../components/AutomationAssessment';
 import Services from '../components/Services';
 import ROICalculator from '../components/ROICalculator';
 import Testimonials from '../components/Testimonials';
@@ -16,6 +17,7 @@ const Index = () => {
       <Navigation />
       <Hero />
       <ProcessSteps />
+      <AutomationAssessment />
       <Services />
       <ROICalculator />
       <Testimonials />
