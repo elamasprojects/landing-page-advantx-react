@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Calendar, MessageCircle, Phone, Mail, Clock, CheckCircle } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
 const ContactCTA = () => {
@@ -17,6 +17,46 @@ const ContactCTA = () => {
     message: ''
   });
   const { toast } = useToast();
+
+  // Load Cal.com embed script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.innerHTML = `
+      (function (C, A, L) { 
+        let p = function (a, ar) { a.q.push(ar); }; 
+        let d = C.document; 
+        C.Cal = C.Cal || function () { 
+          let cal = C.Cal; 
+          let ar = arguments; 
+          if (!cal.loaded) { 
+            cal.ns = {}; 
+            cal.q = cal.q || []; 
+            d.head.appendChild(d.createElement("script")).src = A; 
+            cal.loaded = true; 
+          } 
+          if (ar[0] === L) { 
+            const api = function () { p(api, arguments); }; 
+            const namespace = ar[1]; 
+            api.q = api.q || []; 
+            if(typeof namespace === "string"){
+              cal.ns[namespace] = cal.ns[namespace] || api;
+              p(cal.ns[namespace], ar);
+              p(cal, ["initNamespace", namespace]);
+            } else p(cal, ar); 
+            return;
+          } 
+          p(cal, ar); 
+        }; 
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "30min", {origin:"https://app.cal.com"});
+      Cal.ns["30min"]("ui", {"theme":"dark","hideEventTypeDetails":true,"layout":"month_view"});
+    `;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,10 +82,14 @@ const ContactCTA = () => {
     });
   };
 
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/5491162379365', '_blank');
+  };
+
   return (
     <>
       {/* Agenda Section */}
-      <section id="agenda" className="py-20 bg-gradient-to-br from-primary-900 to-purple-900 text-white">
+      <section id="agenda" className="py-20 bg-gradient-to-br from-primary-900 to-purple-900 dark:from-primary-950 dark:to-purple-950 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
@@ -106,7 +150,9 @@ const ContactCTA = () => {
                 <CardContent>
                   <Button 
                     className="w-full bg-primary-600 hover:bg-primary-700"
-                    onClick={() => window.open('https://calendly.com', '_blank')}
+                    data-cal-link="advantx/30min"
+                    data-cal-namespace="30min"
+                    data-cal-config='{"layout":"month_view","theme":"dark"}'
                   >
                     Agendar Videollamada
                   </Button>
@@ -117,19 +163,19 @@ const ContactCTA = () => {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-white">
                     <Phone className="w-6 h-6" />
-                    Llamada Telefónica
+                    WhatsApp
                   </CardTitle>
                   <CardDescription className="text-gray-300">
-                    Conversación directa por teléfono
+                    Comunicación directa por WhatsApp
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Button 
                     variant="outline" 
                     className="w-full border-white text-white hover:bg-white/10"
-                    onClick={() => window.open('tel:+1234567890')}
+                    onClick={handleWhatsAppClick}
                   >
-                    Llamar Ahora
+                    Contactar por WhatsApp
                   </Button>
                 </CardContent>
               </Card>
@@ -139,27 +185,27 @@ const ContactCTA = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contacto" className="py-20 bg-white">
+      <section id="contacto" className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               ¿Listo para
               <span className="bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent"> Transformar</span> tu Empresa?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Contáctanos hoy y descubre cómo la automatización con IA puede revolucionar tu negocio
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card>
+            <Card className="dark:bg-gray-800 dark:border-gray-700">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 dark:text-gray-100">
                   <MessageCircle className="w-6 h-6 text-primary-600" />
                   Envíanos un Mensaje
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="dark:text-gray-300">
                   Te responderemos en menos de 24 horas
                 </CardDescription>
               </CardHeader>
@@ -167,18 +213,18 @@ const ContactCTA = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name">Nombre *</Label>
+                      <Label htmlFor="name" className="dark:text-gray-200">Nombre *</Label>
                       <Input
                         id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="mt-1"
+                        className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                       />
                     </div>
                     <div>
-                      <Label htmlFor="email">Email *</Label>
+                      <Label htmlFor="email" className="dark:text-gray-200">Email *</Label>
                       <Input
                         id="email"
                         name="email"
@@ -186,36 +232,36 @@ const ContactCTA = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="mt-1"
+                        className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                       />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="company">Empresa</Label>
+                      <Label htmlFor="company" className="dark:text-gray-200">Empresa</Label>
                       <Input
                         id="company"
                         name="company"
                         value={formData.company}
                         onChange={handleInputChange}
-                        className="mt-1"
+                        className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                       />
                     </div>
                     <div>
-                      <Label htmlFor="phone">Teléfono</Label>
+                      <Label htmlFor="phone" className="dark:text-gray-200">Teléfono</Label>
                       <Input
                         id="phone"
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="mt-1"
+                        className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <Label htmlFor="message">Mensaje *</Label>
+                    <Label htmlFor="message" className="dark:text-gray-200">Mensaje *</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -223,7 +269,7 @@ const ContactCTA = () => {
                       onChange={handleInputChange}
                       placeholder="Cuéntanos sobre tu proyecto o necesidades de automatización..."
                       required
-                      className="mt-1 min-h-[120px]"
+                      className="mt-1 min-h-[120px] dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     />
                   </div>
 
@@ -236,46 +282,46 @@ const ContactCTA = () => {
 
             {/* Contact Info */}
             <div className="space-y-8">
-              <Card>
+              <Card className="dark:bg-gray-800 dark:border-gray-700">
                 <CardHeader>
-                  <CardTitle>Información de Contacto</CardTitle>
+                  <CardTitle className="dark:text-gray-100">Información de Contacto</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-primary-600" />
-                    <span>contacto@automateai.com</span>
+                    <span className="dark:text-gray-300">contacto@advantx.com</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-primary-600" />
-                    <span>+1 (555) 123-4567</span>
+                    <span className="dark:text-gray-300">+54 9 11 6237-9365</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Clock className="w-5 h-5 text-primary-600" />
-                    <span>Lun - Vie: 9:00 AM - 6:00 PM</span>
+                    <span className="dark:text-gray-300">Lun - Vie: 9:00 AM - 6:00 PM</span>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-br from-primary-50 to-purple-50 border-primary-200">
+              <Card className="bg-gradient-to-br from-primary-50 to-purple-50 dark:from-primary-900/20 dark:to-purple-900/20 border-primary-200 dark:border-primary-800">
                 <CardHeader>
-                  <CardTitle className="text-primary-800">¿Por qué elegirnos?</CardTitle>
+                  <CardTitle className="text-primary-800 dark:text-primary-200">¿Por qué elegirnos?</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary-600" />
-                    <span className="text-sm">Consultoría gratuita sin compromiso</span>
+                    <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                    <span className="text-sm dark:text-gray-300">Consultoría gratuita sin compromiso</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary-600" />
-                    <span className="text-sm">ROI garantizado en 90 días</span>
+                    <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                    <span className="text-sm dark:text-gray-300">ROI garantizado en 90 días</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary-600" />
-                    <span className="text-sm">Soporte técnico 24/7</span>
+                    <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                    <span className="text-sm dark:text-gary-300">Soporte técnico 24/7</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary-600" />
-                    <span className="text-sm">Implementación en semanas</span>
+                    <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                    <span className="text-sm dark:text-gray-300">Implementación en semanas</span>
                   </div>
                 </CardContent>
               </Card>

@@ -43,15 +43,15 @@ const FAQs = () => {
   ];
 
   return (
-    <section id="faqs" className="py-20 bg-gradient-to-br from-gray-50 to-primary-50">
+    <section id="faqs" className="py-20 bg-gradient-to-br from-gray-50 to-primary-50 dark:from-gray-800 dark:to-primary-900/20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
             Preguntas
             <span className="bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent"> Frecuentes</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Respuestas a las dudas más comunes sobre automatización con IA
           </p>
         </div>
@@ -62,12 +62,12 @@ const FAQs = () => {
             <AccordionItem 
               key={index} 
               value={`item-${index}`}
-              className="bg-white border border-gray-200 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-6 shadow-sm hover:shadow-md transition-shadow"
             >
-              <AccordionTrigger className="text-left font-semibold text-gray-900 hover:text-primary-600 py-6">
+              <AccordionTrigger className="text-left font-semibold text-gray-900 dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400 py-6">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600 leading-relaxed pb-6">
+              <AccordionContent className="text-gray-600 dark:text-gray-300 leading-relaxed pb-6">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
@@ -76,7 +76,7 @@ const FAQs = () => {
 
         {/* CTA */}
         <div className="text-center mt-16">
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
             ¿Tienes alguna otra pregunta?
           </p>
           <button 
