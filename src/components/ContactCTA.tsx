@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -8,7 +7,6 @@ import { Calendar, MessageCircle, Phone, Mail, Clock, CheckCircle } from 'lucide
 import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-
 const ContactCTA = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -20,7 +18,9 @@ const ContactCTA = () => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
   const [isSubmittingNewsletter, setIsSubmittingNewsletter] = useState(false);
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
 
   // Load Cal.com embed script
   useEffect(() => {
@@ -56,38 +56,34 @@ const ContactCTA = () => {
       Cal.ns["30min"]("ui", {"theme":"dark","hideEventTypeDetails":true,"layout":"month_view"});
     `;
     document.head.appendChild(script);
-
     return () => {
       document.head.removeChild(script);
     };
   }, []);
-
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmittingContact(true);
-
     try {
-      const { error } = await supabase
-        .from('contact_messages')
-        .insert([{
-          name: formData.name,
-          email: formData.email,
-          company: formData.company || null,
-          phone: formData.phone || null,
-          message: formData.message
-        }]);
-
+      const {
+        error
+      } = await supabase.from('contact_messages').insert([{
+        name: formData.name,
+        email: formData.email,
+        company: formData.company || null,
+        phone: formData.phone || null,
+        message: formData.message
+      }]);
       if (error) {
         console.error('Error submitting contact form:', error);
         toast({
           title: "Error",
           description: "Hubo un problema al enviar tu mensaje. Por favor intenta nuevamente.",
-          variant: "destructive",
+          variant: "destructive"
         });
       } else {
         toast({
           title: "¡Mensaje enviado!",
-          description: "Te contactaremos en las próximas 24 horas.",
+          description: "Te contactaremos en las próximas 24 horas."
         });
         // Reset form
         setFormData({
@@ -103,41 +99,41 @@ const ContactCTA = () => {
       toast({
         title: "Error",
         description: "Hubo un problema al enviar tu mensaje. Por favor intenta nuevamente.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsSubmittingContact(false);
     }
   };
-
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmittingNewsletter(true);
-
     try {
-      const { error } = await supabase
-        .from('newsletter_subscriptions')
-        .insert([{ email: newsletterEmail }]);
-
+      const {
+        error
+      } = await supabase.from('newsletter_subscriptions').insert([{
+        email: newsletterEmail
+      }]);
       if (error) {
-        if (error.code === '23505') { // Unique constraint violation
+        if (error.code === '23505') {
+          // Unique constraint violation
           toast({
             title: "Ya estás suscrito",
             description: "Este email ya está suscrito a nuestro newsletter.",
-            variant: "destructive",
+            variant: "destructive"
           });
         } else {
           console.error('Error subscribing to newsletter:', error);
           toast({
             title: "Error",
             description: "Hubo un problema al suscribirte. Por favor intenta nuevamente.",
-            variant: "destructive",
+            variant: "destructive"
           });
         }
       } else {
         toast({
           title: "¡Suscripción exitosa!",
-          description: "Te has suscrito correctamente a nuestro newsletter.",
+          description: "Te has suscrito correctamente a nuestro newsletter."
         });
         setNewsletterEmail('');
       }
@@ -146,26 +142,22 @@ const ContactCTA = () => {
       toast({
         title: "Error",
         description: "Hubo un problema al suscribirte. Por favor intenta nuevamente.",
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setIsSubmittingNewsletter(false);
     }
   };
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-
   const handleWhatsAppClick = () => {
     window.open('https://wa.me/5491162379365', '_blank');
   };
-
-  return (
-    <>
+  return <>
       {/* Agenda Section */}
       <section id="agenda" className="py-20 bg-gradient-to-br from-primary-900 to-purple-900 dark:from-primary-950 dark:to-purple-950 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -226,12 +218,7 @@ const ContactCTA = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button 
-                    className="w-full bg-primary-600 hover:bg-primary-700"
-                    data-cal-link="advantx/30min"
-                    data-cal-namespace="30min"
-                    data-cal-config='{"layout":"month_view","theme":"dark"}'
-                  >
+                  <Button className="w-full bg-primary-600 hover:bg-primary-700" data-cal-link="advantx/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","theme":"dark"}'>
                     Agendar Videollamada
                   </Button>
                 </CardContent>
@@ -248,11 +235,7 @@ const ContactCTA = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-white text-white hover:bg-white/10"
-                    onClick={handleWhatsAppClick}
-                  >
+                  <Button variant="outline" onClick={handleWhatsAppClick} className="w-full border-white hover:bg-white/10 text-slate-950">
                     Contactar por WhatsApp
                   </Button>
                 </CardContent>
@@ -292,71 +275,31 @@ const ContactCTA = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="name" className="dark:text-gray-200">Nombre *</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                      />
+                      <Input id="name" name="name" value={formData.name} onChange={handleInputChange} required className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                     </div>
                     <div>
                       <Label htmlFor="email" className="dark:text-gray-200">Email *</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                      />
+                      <Input id="email" name="email" type="email" value={formData.email} onChange={handleInputChange} required className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                     </div>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="company" className="dark:text-gray-200">Empresa</Label>
-                      <Input
-                        id="company"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleInputChange}
-                        className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                      />
+                      <Input id="company" name="company" value={formData.company} onChange={handleInputChange} className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                     </div>
                     <div>
                       <Label htmlFor="phone" className="dark:text-gray-200">Teléfono</Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                      />
+                      <Input id="phone" name="phone" value={formData.phone} onChange={handleInputChange} className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                     </div>
                   </div>
 
                   <div>
                     <Label htmlFor="message" className="dark:text-gray-200">Mensaje *</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Cuéntanos sobre tu proyecto o necesidades de automatización..."
-                      required
-                      className="mt-1 min-h-[120px] dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                    />
+                    <Textarea id="message" name="message" value={formData.message} onChange={handleInputChange} placeholder="Cuéntanos sobre tu proyecto o necesidades de automatización..." required className="mt-1 min-h-[120px] dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-primary-600 hover:bg-primary-700" 
-                    size="lg"
-                    disabled={isSubmittingContact}
-                  >
+                  <Button type="submit" className="w-full bg-primary-600 hover:bg-primary-700" size="lg" disabled={isSubmittingContact}>
                     {isSubmittingContact ? 'Enviando...' : 'Enviar Mensaje'}
                   </Button>
                 </form>
@@ -423,26 +366,13 @@ const ContactCTA = () => {
             Recibe los últimos insights sobre automatización e IA directamente en tu inbox
           </p>
           <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Tu email"
-              value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
-              required
-              className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-primary-300 dark:bg-gray-700 dark:text-white"
-            />
-            <button 
-              type="submit"
-              disabled={isSubmittingNewsletter}
-              className="px-6 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50"
-            >
+            <input type="email" placeholder="Tu email" value={newsletterEmail} onChange={e => setNewsletterEmail(e.target.value)} required className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-primary-300 dark:bg-gray-700 dark:text-white" />
+            <button type="submit" disabled={isSubmittingNewsletter} className="px-6 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50">
               {isSubmittingNewsletter ? 'Suscribiendo...' : 'Suscribirse'}
             </button>
           </form>
         </div>
       </section>
-    </>
-  );
+    </>;
 };
-
 export default ContactCTA;
