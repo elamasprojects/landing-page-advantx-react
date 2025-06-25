@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Calendar, MessageCircle, Phone, Mail, Clock, CheckCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
 
 const ContactCTA = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,9 @@ const ContactCTA = () => {
     phone: '',
     message: ''
   });
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [isSubmittingContact, setIsSubmittingContact] = useState(false);
+  const [isSubmittingNewsletter, setIsSubmittingNewsletter] = useState(false);
   const { toast } = useToast();
 
   // Load Cal.com embed script
@@ -58,21 +62,95 @@ const ContactCTA = () => {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    toast({
-      title: "¡Mensaje enviado!",
-      description: "Te contactaremos en las próximas 24 horas.",
-    });
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      phone: '',
-      message: ''
-    });
+    setIsSubmittingContact(true);
+
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([{
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || null,
+          phone: formData.phone || null,
+          message: formData.message
+        }]);
+
+      if (error) {
+        console.error('Error submitting contact form:', error);
+        toast({
+          title: "Error",
+          description: "Hubo un problema al enviar tu mensaje. Por favor intenta nuevamente.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "¡Mensaje enviado!",
+          description: "Te contactaremos en las próximas 24 horas.",
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          message: ''
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      toast({
+        title: "Error",
+        description: "Hubo un problema al enviar tu mensaje. Por favor intenta nuevamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmittingContact(false);
+    }
+  };
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingNewsletter(true);
+
+    try {
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert([{ email: newsletterEmail }]);
+
+      if (error) {
+        if (error.code === '23505') { // Unique constraint violation
+          toast({
+            title: "Ya estás suscrito",
+            description: "Este email ya está suscrito a nuestro newsletter.",
+            variant: "destructive",
+          });
+        } else {
+          console.error('Error subscribing to newsletter:', error);
+          toast({
+            title: "Error",
+            description: "Hubo un problema al suscribirte. Por favor intenta nuevamente.",
+            variant: "destructive",
+          });
+        }
+      } else {
+        toast({
+          title: "¡Suscripción exitosa!",
+          description: "Te has suscrito correctamente a nuestro newsletter.",
+        });
+        setNewsletterEmail('');
+      }
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error);
+      toast({
+        title: "Error",
+        description: "Hubo un problema al suscribirte. Por favor intenta nuevamente.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmittingNewsletter(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -210,7 +288,7 @@ const ContactCTA = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="name" className="dark:text-gray-200">Nombre *</Label>
@@ -273,8 +351,13 @@ const ContactCTA = () => {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full bg-primary-600 hover:bg-primary-700" size="lg">
-                    Enviar Mensaje
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-primary-600 hover:bg-primary-700" 
+                    size="lg"
+                    disabled={isSubmittingContact}
+                  >
+                    {isSubmittingContact ? 'Enviando...' : 'Enviar Mensaje'}
                   </Button>
                 </form>
               </CardContent>
@@ -317,7 +400,7 @@ const ContactCTA = () => {
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400" />
-                    <span className="text-sm dark:text-gary-300">Soporte técnico 24/7</span>
+                    <span className="text-sm dark:text-gray-300">Soporte técnico 24/7</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-primary-600 dark:text-primary-400" />
@@ -327,6 +410,35 @@ const ContactCTA = () => {
               </Card>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Newsletter Subscription */}
+      <section className="py-16 bg-primary-600 dark:bg-primary-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Mantente Actualizado
+          </h2>
+          <p className="text-xl text-primary-100 mb-8">
+            Recibe los últimos insights sobre automatización e IA directamente en tu inbox
+          </p>
+          <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <input
+              type="email"
+              placeholder="Tu email"
+              value={newsletterEmail}
+              onChange={(e) => setNewsletterEmail(e.target.value)}
+              required
+              className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-primary-300 dark:bg-gray-700 dark:text-white"
+            />
+            <button 
+              type="submit"
+              disabled={isSubmittingNewsletter}
+              className="px-6 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-50"
+            >
+              {isSubmittingNewsletter ? 'Suscribiendo...' : 'Suscribirse'}
+            </button>
+          </form>
         </div>
       </section>
     </>
