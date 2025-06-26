@@ -5,22 +5,22 @@ import { Linkedin, Twitter } from 'lucide-react';
 const Team = () => {
   const founders = [
     {
-      name: "Alejandro Torres",
+      name: "Juan Cruz Fernandez",
       role: "CEO & Co-fundador",
-      bio: "Ex-Director de IA en Google. 15 años de experiencia en machine learning y automatización empresarial. PhD en Computer Science por MIT.",
-      image: "AT",
+      bio: "5 años de experiencia en procesos y marketing digital. Abogacía en UBA.",
+      image: "JF",
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/juancruzferz/",
         twitter: "#"
       }
     },
     {
-      name: "Isabella Rodríguez",
-      role: "CTO & Co-fundadora",
-      bio: "Ex-Principal Engineer en Microsoft Azure. Especialista en arquitecturas de IA escalables y integración de sistemas empresariales. MS en AI por Stanford.",
-      image: "IR",
+      name: "Ezequiel Lamas",
+      role: "CTO & Co-fundador",
+      bio: "Especialista en arquitecturas de IA escalables e integración de sistemas empresariales. Ingeniería Industrial en ITBA.",
+      image: "EL",
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/ezequiel-lamas-ab5568256/",
         twitter: "#"
       }
     }
@@ -66,6 +66,8 @@ const Team = () => {
                   <div className="flex space-x-4">
                     <a 
                       href={founder.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-10 h-10 bg-primary-100 dark:bg-primary-500/20 hover:bg-primary-200 dark:hover:bg-primary-500/30 rounded-full flex items-center justify-center transition-colors"
                     >
                       <Linkedin className="w-5 h-5 text-primary-600 dark:text-primary-400" />
@@ -84,22 +86,18 @@ const Team = () => {
         </div>
 
         {/* Company Stats */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           <div>
-            <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">500+</div>
+            <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">20+</div>
             <div className="text-gray-600 dark:text-gray-400">Procesos Automatizados</div>
           </div>
           <div>
-            <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">150+</div>
+            <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">5+</div>
             <div className="text-gray-600 dark:text-gray-400">Empresas Transformadas</div>
           </div>
           <div>
-            <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">$50M+</div>
+            <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">$50K+</div>
             <div className="text-gray-600 dark:text-gray-400">Ahorrado por Clientes</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2">98%</div>
-            <div className="text-gray-600 dark:text-gray-400">Satisfacción del Cliente</div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import { Star, Quote } from 'lucide-react';
+import LogoCarousel from './LogoCarousel';
 
 const Testimonials = () => {
   const testimonials = [
@@ -25,15 +26,6 @@ const Testimonials = () => {
       rating: 5,
       avatar: "AM"
     }
-  ];
-
-  const clients = [
-    "TechStart Solutions",
-    "RetailMax Corp",
-    "FinanceFlow Ltd",
-    "InnovateLab",
-    "SmartBusiness Inc",
-    "DigitalPro Agency"
   ];
 
   return (
@@ -81,17 +73,8 @@ const Testimonials = () => {
           ))}
         </div>
 
-        {/* Client Logos */}
-        <div className="text-center">
-          <p className="text-gray-400 mb-8 text-lg">Empresas que confían en nosotros</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-            {clients.map((client, index) => (
-              <div key={index} className="bg-white/10 dark:bg-slate-800/30 backdrop-blur-sm rounded-lg p-4 hover:bg-white/15 dark:hover:bg-slate-800/50 transition-all">
-                <div className="text-white font-semibold text-center">{client}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Logo Carousel */}
+        <LogoCarousel />
       </div>
     </section>
   );
