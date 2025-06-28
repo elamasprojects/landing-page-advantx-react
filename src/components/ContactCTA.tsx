@@ -235,7 +235,7 @@ const ContactCTA = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button variant="outline" onClick={handleWhatsAppClick} className="w-full border-white hover:bg-white/10 text-slate-950">
+                  <Button variant="outline" onClick={handleWhatsAppClick} className="w-full border-white hover:bg-white/10 text-zinc-50">
                     Contactar por WhatsApp
                   </Button>
                 </CardContent>
