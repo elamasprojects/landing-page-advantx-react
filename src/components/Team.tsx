@@ -8,7 +8,7 @@ const Team = () => {
       name: "Juan Cruz Fernandez",
       role: "CEO & Co-fundador",
       bio: "5 años de experiencia en procesos y marketing digital. Abogacía en UBA.",
-      image: "/lovable-uploads/efaa7ab0-1150-479c-b4e7-7333ea8994d5.png",
+      image: "/lovable-uploads/ebe1b7f2-996b-49e3-93d5-efe32499bdbb.png",
       social: {
         linkedin: "https://www.linkedin.com/in/juancruzferz/",
         twitter: "#"

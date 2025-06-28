@@ -58,63 +58,69 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "El Futuro de la Automatización con IA en las Empresas",
-      excerpt: "Descubre cómo la inteligencia artificial está transformando los procesos empresariales y qué esperar en los próximos años.",
-      author: "Equipo AdvantX",
+      title: "Agentes de Voz con IA: El Futuro de las Ventas Automatizadas",
+      excerpt: "Descubre cómo los agentes de voz impulsados por inteligencia artificial están revolucionando la prospección de clientes y las llamadas de ventas, aumentando las conversiones hasta un 300%.",
+      author: "Juan Cruz",
       date: "2024-01-15",
-      readTime: "5 min",
-      image: "/placeholder.svg",
-      category: "Tendencias"
+      readTime: "8 min",
+      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Tendencias",
+      content: "Los agentes de voz con IA están transformando radicalmente el panorama de las ventas B2B. Estos sistemas pueden realizar cientos de llamadas por día, calificar leads automáticamente y agendar reuniones de alta calidad sin intervención humana."
     },
     {
       id: 2,
-      title: "Casos de Éxito: Automatización de Procesos de RR.HH.",
-      excerpt: "Conoce cómo empresas líderes han optimizado sus departamentos de recursos humanos con nuestras soluciones de IA.",
-      author: "María González",
+      title: "AI Setter: Cómo Automatizamos la Prospección de Leads para una Startup",
+      excerpt: "Caso de estudio completo: cómo implementamos un sistema de AI Setter que generó 50+ reuniones calificadas por mes para una startup tecnológica, reduciendo el costo por lead en un 70%.",
+      author: "Ezequiel Lamas",
       date: "2024-01-12",
-      readTime: "7 min",
-      image: "/placeholder.svg",
-      category: "Casos de Éxito"
+      readTime: "12 min",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
+      category: "Casos de Éxito",
+      content: "Una startup de SaaS logró escalar su proceso de prospección de 10 a 500+ contactos semanales implementando nuestro sistema AI Setter. El ROI fue del 400% en los primeros 3 meses."
     },
     {
       id: 3,
-      title: "Guía Completa: Implementación de Chatbots Inteligentes",
-      excerpt: "Todo lo que necesitas saber para implementar chatbots con IA en tu empresa y mejorar la atención al cliente.",
-      author: "Carlos Rodríguez",
+      title: "Chatbots vs Agentes de Voz: ¿Cuál Elegir para Tu Negocio?",
+      excerpt: "Análisis detallado de las ventajas y desventajas entre chatbots tradicionales y los nuevos agentes de voz con IA. Incluye casos de uso, costos y métricas de conversión reales.",
+      author: "Juan Cruz",
       date: "2024-01-10",
       readTime: "10 min",
-      image: "/placeholder.svg",
-      category: "Guías"
+      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Comparativas",
+      content: "Mientras los chatbots son excelentes para respuestas rápidas y soporte 24/7, los agentes de voz brillan en conversaciones complejas de ventas y seguimiento personalizado de leads."
     },
     {
       id: 4,
-      title: "ROI de la Automatización: Métricas que Importan",
-      excerpt: "Aprende a medir el retorno de inversión de tus proyectos de automatización y justificar nuevas implementaciones.",
-      author: "Ana Martínez",
+      title: "ROI Comprobado: Métricas Reales de Automatización con IA",
+      excerpt: "Datos concretos de 15 implementaciones: tiempo de recuperación de inversión, aumento en conversiones, reducción de costos operativos y mejora en satisfacción del cliente.",
+      author: "Equipo AdvantX",
       date: "2024-01-08",
       readTime: "6 min",
-      image: "/placeholder.svg",
-      category: "Análisis"
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Análisis",
+      content: "Nuestros clientes experimentan en promedio un ROI del 320% en los primeros 6 meses, con una reducción del 60% en costos de adquisición de clientes y un aumento del 40% en la tasa de conversión."
     },
     {
       id: 5,
-      title: "Inteligencia Artificial vs. Automatización Tradicional",
-      excerpt: "Comparamos las ventajas de la IA moderna frente a los métodos tradicionales de automatización empresarial.",
-      author: "Equipo AdvantX",
+      title: "Implementación de Agentes de IA: Guía Paso a Paso",
+      excerpt: "Tutorial completo para implementar agentes de IA en tu empresa: desde la planificación inicial hasta la medición de resultados. Incluye checklist descargable y mejores prácticas.",
+      author: "Ezequiel Lamas",
       date: "2024-01-05",
-      readTime: "8 min",
-      image: "/placeholder.svg",
-      category: "Comparativas"
+      readTime: "15 min",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Guías",
+      content: "La implementación exitosa de agentes de IA requiere una planificación cuidadosa. Cubrimos desde la selección de casos de uso hasta la integración con sistemas existentes y el entrenamiento del equipo."
     },
     {
       id: 6,
-      title: "Seguridad en la Era de la IA Empresarial",
-      excerpt: "Mejores prácticas para mantener la seguridad de tus datos mientras implementas soluciones de inteligencia artificial.",
-      author: "Roberto Silva",
+      title: "Seguridad y Privacidad en Agentes de IA Conversacionales",
+      excerpt: "Mejores prácticas para mantener la seguridad de datos sensibles cuando implementas agentes de IA que manejan información confidencial de clientes y procesos de negocio críticos.",
+      author: "Equipo AdvantX",
       date: "2024-01-03",
-      readTime: "12 min",
-      image: "/placeholder.svg",
-      category: "Seguridad"
+      readTime: "9 min",
+      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      category: "Seguridad",
+      content: "La seguridad no es opcional cuando se trata de IA empresarial. Implementamos protocolos de encriptación end-to-end, auditorías de acceso y cumplimiento con regulaciones internacionales de privacidad."
     }
   ];
 
@@ -161,7 +167,13 @@ const Blog = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
               <Card key={post.id} className="hover:shadow-lg transition-shadow cursor-pointer dark:bg-gray-800 dark:border-gray-700">
-                <div className="aspect-video bg-gradient-to-br from-primary-100 to-purple-100 dark:from-primary-900 dark:to-purple-900 rounded-t-lg"></div>
+                <div className="aspect-video overflow-hidden rounded-t-lg">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <span className="px-3 py-1 bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300 text-xs font-medium rounded-full">

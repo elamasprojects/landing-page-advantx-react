@@ -1,5 +1,5 @@
 
-import { Bot, BarChart3, Workflow, MessageSquare, FileText, Zap } from 'lucide-react';
+import { Bot, BarChart3, Workflow, MessageSquare, FileText, Zap, Phone, Target } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Services = () => {
@@ -11,16 +11,16 @@ const Services = () => {
       features: ["Procesamiento de lenguaje natural", "Integración multicanal", "Aprendizaje continuo"]
     },
     {
-      icon: Workflow,
-      title: "Automatización de Procesos",
-      description: "Optimización de flujos de trabajo empresariales eliminando tareas manuales repetitivas.",
-      features: ["RPA avanzado", "Integración de sistemas", "Monitoreo en tiempo real"]
+      icon: Target,
+      title: "AI Setter",
+      description: "Un agente de IA que prospecta por vos y agenda llamadas de venta para tu negocio de forma completamente automatizada.",
+      features: ["Prospección automática", "Calificación de leads", "Agenda de reuniones automática"]
     },
     {
-      icon: BarChart3,
-      title: "Análisis Predictivo",
-      description: "Insights basados en datos para tomar decisiones estratégicas con predicciones precisas.",
-      features: ["Machine Learning", "Forecasting avanzado", "Dashboards personalizados"]
+      icon: Phone,
+      title: "Agentes de Voz",
+      description: "Asistentes de IA conversacionales que pueden realizar llamadas automáticas y manejar interacciones de voz complejas.",
+      features: ["Reconocimiento de voz avanzado", "Conversaciones naturales", "Integración telefónica"]
     },
     {
       icon: FileText,
