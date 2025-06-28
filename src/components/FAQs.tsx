@@ -1,4 +1,3 @@
-
 import {
   Accordion,
   AccordionContent,
@@ -34,11 +33,11 @@ const FAQs = () => {
     },
     {
       question: "¿Cuál es el costo típico de una implementación?",
-      answer: "Los costos varían según el alcance del proyecto. Proyectos básicos pueden comenzar desde $10,000, mientras que automatizaciones empresariales completas pueden llegar a $100,000+. Ofrecemos consultoría gratuita para evaluar tu caso específico y proporcionar un presupuesto detallado."
+      answer: "Los costos varían según el alcance del proyecto. Proyectos básicos pueden comenzar desde $750, mientras que automatizaciones más completas pueden llegar a $3000+. Ofrecemos consultoría gratuita para evaluar tu caso específico y proporcionar un presupuesto detallado en minutos."
     },
     {
       question: "¿Ofrecen soporte después de la implementación?",
-      answer: "Absolutamente. Incluimos 6 meses de soporte gratuito con cada implementación. Después, ofrecemos planes de mantenimiento que incluyen monitoreo 24/7, actualizaciones regulares, optimizaciones continuas y soporte técnico prioritario."
+      answer: "Absolutamente. Cada implementación cuenta con un mentenimiento mensual que incluye los gastos de servicios de terceros, soporte técnico prioritario y actualizaciones futuras del servicio."
     }
   ];
 

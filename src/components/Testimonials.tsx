@@ -1,28 +1,27 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Star, Quote } from 'lucide-react';
-import LogoCarousel from './LogoCarousel';
+// import LogoCarousel from './LogoCarousel';
 
 const Testimonials = () => {
   const testimonials = [
     {
       name: "María González",
-      role: "CEO, TechStart Solutions",
+      role: "CEO",
       content: "AutomateAI transformó completamente nuestros procesos. Ahorramos 40 horas semanales y aumentamos nuestra productividad en un 300%. La inversión se pagó en solo 3 meses.",
       rating: 5,
       avatar: "MG"
     },
     {
       name: "Carlos Ruiz",
-      role: "Director de Operaciones, RetailMax",
+      role: "Director de Operaciones",
       content: "La automatización de nuestro servicio al cliente fue increíble. Ahora atendemos 10x más consultas con la mitad del personal, y la satisfacción del cliente aumentó significativamente.",
       rating: 5,
       avatar: "CR"
     },
     {
       name: "Ana Martínez",
-      role: "Gerente General, FinanceFlow",
-      content: "Implementaron un sistema de procesamiento de documentos que revolucionó nuestra empresa. Lo que antes tomaba días, ahora se hace en minutos. Excelente equipo y soporte.",
+      role: "Gerente General",
+      content: "Implementaron un sistema de procesamiento de documentos que revolucionó nuestra empresa. Lo que antes tomaba días, ahora se hace en minutos. Excelente equipo y soporte. Se nota que les apasiona lo que hacen",
       rating: 5,
       avatar: "AM"
     }
@@ -74,7 +73,7 @@ const Testimonials = () => {
         </div>
 
         {/* Logo Carousel */}
-        <LogoCarousel />
+        {/* <LogoCarousel /> */}
       </div>
     </section>
   );
