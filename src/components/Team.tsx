@@ -8,7 +8,7 @@ const Team = () => {
       name: "Juan Cruz Fernandez",
       role: "CEO & Co-fundador",
       bio: "5 años de experiencia en procesos y marketing digital. Abogacía en UBA.",
-      image: "JF",
+      image: "/lovable-uploads/efaa7ab0-1150-479c-b4e7-7333ea8994d5.png",
       social: {
         linkedin: "https://www.linkedin.com/in/juancruzferz/",
         twitter: "#"
@@ -18,7 +18,7 @@ const Team = () => {
       name: "Ezequiel Lamas",
       role: "CTO & Co-fundador",
       bio: "Especialista en arquitecturas de IA escalables e integración de sistemas empresariales. Ingeniería Industrial en ITBA.",
-      image: "EL",
+      image: "/lovable-uploads/4a6d1cef-d9c3-4c86-982b-24ab179b70d4.png",
       social: {
         linkedin: "https://www.linkedin.com/in/ezequiel-lamas-ab5568256/",
         twitter: "#"
@@ -47,8 +47,12 @@ const Team = () => {
               <CardContent className="p-8">
                 <div className="flex flex-col items-center text-center">
                   {/* Avatar */}
-                  <div className="w-32 h-32 bg-gradient-to-br from-primary-500 to-purple-600 dark:from-primary-400 dark:to-purple-500 rounded-full flex items-center justify-center text-white text-3xl font-bold mb-6">
-                    {founder.image}
+                  <div className="w-32 h-32 rounded-full overflow-hidden mb-6">
+                    <img 
+                      src={founder.image} 
+                      alt={founder.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   
                   {/* Info */}

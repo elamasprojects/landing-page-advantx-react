@@ -10,12 +10,14 @@ import Team from '../components/Team';
 import FAQs from '../components/FAQs';
 import ContactCTA from '../components/ContactCTA';
 import Footer from '../components/Footer';
+// import LogoCarousel from '../components/LogoCarousel';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       <Navigation />
       <Hero />
+      {/* <LogoCarousel /> */}
       <ProcessSteps />
       <AutomationAssessment />
       <Services />
