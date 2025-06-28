@@ -28,12 +28,8 @@ const Hero = () => {
 
         {/* Main Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in">
-          <span className="block">Automatizá procesos</span>
           <span className="block bg-gradient-to-r from-primary-600 via-purple-600 to-blue-600 dark:from-primary-400 dark:via-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
-            con IA
-          </span>
-          <span className="block text-3xl md:text-4xl lg:text-5xl mt-2 text-gray-700 dark:text-gray-300">
-            Sin fricción. Sin límites.
+            Duplicá tus ingresos y reducí tus costos con IA
           </span>
         </h1>
 
