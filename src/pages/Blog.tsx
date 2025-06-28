@@ -1,4 +1,3 @@
-
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Calendar, Clock, User } from 'lucide-react';
@@ -61,7 +60,7 @@ const Blog = () => {
       title: "Agentes de Voz con IA: El Futuro de las Ventas Automatizadas",
       excerpt: "Descubre cómo los agentes de voz impulsados por inteligencia artificial están revolucionando la prospección de clientes y las llamadas de ventas, aumentando las conversiones hasta un 300%.",
       author: "Juan Cruz",
-      date: "2024-01-15",
+      date: "2025-06-15",
       readTime: "8 min",
       image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       category: "Tendencias",
@@ -72,7 +71,7 @@ const Blog = () => {
       title: "AI Setter: Cómo Automatizamos la Prospección de Leads para una Startup",
       excerpt: "Caso de estudio completo: cómo implementamos un sistema de AI Setter que generó 50+ reuniones calificadas por mes para una startup tecnológica, reduciendo el costo por lead en un 70%.",
       author: "Ezequiel Lamas",
-      date: "2024-01-12",
+      date: "2025-05-20",
       readTime: "12 min",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80",
       category: "Casos de Éxito",
@@ -83,7 +82,7 @@ const Blog = () => {
       title: "Chatbots vs Agentes de Voz: ¿Cuál Elegir para Tu Negocio?",
       excerpt: "Análisis detallado de las ventajas y desventajas entre chatbots tradicionales y los nuevos agentes de voz con IA. Incluye casos de uso, costos y métricas de conversión reales.",
       author: "Juan Cruz",
-      date: "2024-01-10",
+      date: "2025-04-18",
       readTime: "10 min",
       image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       category: "Comparativas",
@@ -94,7 +93,7 @@ const Blog = () => {
       title: "ROI Comprobado: Métricas Reales de Automatización con IA",
       excerpt: "Datos concretos de 15 implementaciones: tiempo de recuperación de inversión, aumento en conversiones, reducción de costos operativos y mejora en satisfacción del cliente.",
       author: "Equipo AdvantX",
-      date: "2024-01-08",
+      date: "2025-03-25",
       readTime: "6 min",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       category: "Análisis",
@@ -105,7 +104,7 @@ const Blog = () => {
       title: "Implementación de Agentes de IA: Guía Paso a Paso",
       excerpt: "Tutorial completo para implementar agentes de IA en tu empresa: desde la planificación inicial hasta la medición de resultados. Incluye checklist descargable y mejores prácticas.",
       author: "Ezequiel Lamas",
-      date: "2024-01-05",
+      date: "2025-02-28",
       readTime: "15 min",
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       category: "Guías",
@@ -116,7 +115,7 @@ const Blog = () => {
       title: "Seguridad y Privacidad en Agentes de IA Conversacionales",
       excerpt: "Mejores prácticas para mantener la seguridad de datos sensibles cuando implementas agentes de IA que manejan información confidencial de clientes y procesos de negocio críticos.",
       author: "Equipo AdvantX",
-      date: "2024-01-03",
+      date: "2025-01-15",
       readTime: "9 min",
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
       category: "Seguridad",
