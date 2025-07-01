@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -165,44 +166,46 @@ const Blog = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
-              <Card key={post.id} className="hover:shadow-lg transition-shadow cursor-pointer dark:bg-gray-800 dark:border-gray-700">
-                <div className="aspect-video overflow-hidden rounded-t-lg">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="px-3 py-1 bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300 text-xs font-medium rounded-full">
-                      {post.category}
-                    </span>
-                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {post.readTime}
-                    </div>
+              <Link key={post.id} to={`/blog/${post.id}`}>
+                <Card className="hover:shadow-lg transition-all duration-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700 h-full">
+                  <div className="aspect-video overflow-hidden rounded-t-lg">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  <CardTitle className="text-xl font-bold hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-                    {post.title}
-                  </CardTitle>
-                  <CardDescription className="dark:text-gray-300">
-                    {post.excerpt}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-                    <div className="flex items-center">
-                      <User className="w-4 h-4 mr-1" />
-                      {post.author}
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="px-3 py-1 bg-primary-100 dark:bg-primary-800 text-primary-700 dark:text-primary-300 text-xs font-medium rounded-full">
+                        {post.category}
+                      </span>
+                      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                        <Clock className="w-4 h-4 mr-1" />
+                        {post.readTime}
+                      </div>
                     </div>
-                    <div className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {new Date(post.date).toLocaleDateString('es-ES')}
+                    <CardTitle className="text-xl font-bold hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                      {post.title}
+                    </CardTitle>
+                    <CardDescription className="dark:text-gray-300">
+                      {post.excerpt}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+                      <div className="flex items-center">
+                        <User className="w-4 h-4 mr-1" />
+                        {post.author}
+                      </div>
+                      <div className="flex items-center">
+                        <Calendar className="w-4 h-4 mr-1" />
+                        {new Date(post.date).toLocaleDateString('es-ES')}
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
