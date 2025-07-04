@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -105,11 +104,10 @@ const AutomationAssessment = () => {
       title: '¿Cuál es tu presupuesto estimado para automatización?',
       type: 'single',
       options: [
-        'Menos de $5,000 USD',
-        '$5,000 - $15,000 USD',
-        '$15,000 - $50,000 USD',
-        '$50,000 - $100,000 USD',
-        'Más de $100,000 USD'
+        '$500 - $1,000 USD',
+        '$1,000 - $2,500 USD',
+        '$2,500 - $5,000 USD',
+        'Más de $5,000 USD'
       ]
     },
     {

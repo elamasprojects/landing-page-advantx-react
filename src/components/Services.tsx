@@ -16,13 +16,15 @@ const Services = () => {
       icon: Target,
       title: "AI Setter",
       description: "Un agente de IA que prospecta por vos y agenda llamadas de venta para tu negocio de forma completamente automatizada.",
-      features: ["Prospección automática", "Calificación de leads", "Agenda de reuniones automática"]
+      features: ["Prospección automática", "Calificación de leads", "Agenda de reuniones automática"],
+      badge: "Landing Page Bonificada"
     },
     {
       icon: Phone,
       title: "Agentes de Voz",
       description: "Asistentes de IA conversacionales que pueden realizar llamadas automáticas y manejar interacciones de voz complejas.",
-      features: ["Reconocimiento de voz avanzado", "Conversaciones naturales", "Integración telefónica"]
+      features: ["Reconocimiento de voz avanzado", "Conversaciones naturales", "Integración telefónica"],
+      badge: "Landing Page Bonificada"
     },
     {
       icon: FileText,
@@ -61,25 +63,23 @@ const Services = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="group hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 border-0 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:scale-105">
-               <CardHeader>
-                 <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-purple-600 dark:from-primary-400 dark:to-purple-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                   <service.icon className="w-8 h-8 text-white" />
-                 </div>
-                 <div className="flex items-center justify-between mb-2">
-                   <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                     {service.title}
-                   </CardTitle>
-                   {service.badge && (
-                     <Badge variant="secondary" className="ml-2 text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                       {service.badge}
-                     </Badge>
-                   )}
-                 </div>
-                 <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                   {service.description}
-                 </CardDescription>
-               </CardHeader>
+            <Card key={index} className="group hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 border-0 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:scale-105 relative">
+              {service.badge && (
+                <Badge variant="secondary" className="absolute top-3 right-3 z-10 text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                  {service.badge}
+                </Badge>
+              )}
+              <CardHeader>
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-purple-600 dark:from-primary-400 dark:to-purple-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <service.icon className="w-8 h-8 text-white" />
+                </div>
+                <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  {service.title}
+                </CardTitle>
+                <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {service.description}
+                </CardDescription>
+              </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
