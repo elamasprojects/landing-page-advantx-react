@@ -1,6 +1,7 @@
 
-import { Bot, BarChart3, Workflow, MessageSquare, FileText, Zap, Phone, Target } from 'lucide-react';
+import { Bot, BarChart3, Workflow, MessageSquare, FileText, Zap, Phone, Target, Globe, Smartphone } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const Services = () => {
   const services = [
@@ -8,7 +9,8 @@ const Services = () => {
       icon: Bot,
       title: "Chatbots Inteligentes",
       description: "Automatización de atención al cliente 24/7 con IA conversacional avanzada que resuelve consultas complejas.",
-      features: ["Procesamiento de lenguaje natural", "Integración multicanal", "Aprendizaje continuo"]
+      features: ["Procesamiento de lenguaje natural", "Integración multicanal", "Aprendizaje continuo"],
+      badge: "Landing Page Bonificada"
     },
     {
       icon: Target,
@@ -29,16 +31,16 @@ const Services = () => {
       features: ["OCR inteligente", "Clasificación automática", "Validación de datos"]
     },
     {
-      icon: MessageSquare,
-      title: "Asistentes Virtuales",
-      description: "Asistentes de IA personalizados para equipos de trabajo que mejoran la productividad.",
-      features: ["Integración con herramientas", "Comandos por voz", "Automatización de tareas"]
+      icon: Globe,
+      title: "Landing Page",
+      description: "Diseño y desarrollo de páginas de aterrizaje optimizadas para conversión con IA integrada.",
+      features: ["Diseño responsive", "Optimización SEO", "Integración con chatbots"]
     },
     {
-      icon: Zap,
-      title: "Integración de APIs",
-      description: "Conexión inteligente entre sistemas y plataformas para crear ecosistemas eficientes.",
-      features: ["APIs RESTful", "Sincronización en tiempo real", "Escalabilidad garantizada"]
+      icon: Smartphone,
+      title: "Web App",
+      description: "Desarrollo de aplicaciones web personalizadas con automatización e inteligencia artificial.",
+      features: ["Interfaz intuitiva", "Integración de IA", "Escalabilidad completa"]
     }
   ];
 
@@ -60,17 +62,24 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <Card key={index} className="group hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 border-0 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:scale-105">
-              <CardHeader>
-                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-purple-600 dark:from-primary-400 dark:to-purple-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <service.icon className="w-8 h-8 text-white" />
-                </div>
-                <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                  {service.title}
-                </CardTitle>
-                <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {service.description}
-                </CardDescription>
-              </CardHeader>
+               <CardHeader>
+                 <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-purple-600 dark:from-primary-400 dark:to-purple-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                   <service.icon className="w-8 h-8 text-white" />
+                 </div>
+                 <div className="flex items-center justify-between mb-2">
+                   <CardTitle className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                     {service.title}
+                   </CardTitle>
+                   {service.badge && (
+                     <Badge variant="secondary" className="ml-2 text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                       {service.badge}
+                     </Badge>
+                   )}
+                 </div>
+                 <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                   {service.description}
+                 </CardDescription>
+               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
