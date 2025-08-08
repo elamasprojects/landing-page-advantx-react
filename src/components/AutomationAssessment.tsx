@@ -297,7 +297,7 @@ const AutomationAssessment = () => {
 
           <div className="text-center">
             <Button 
-              onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })}
               size="lg"
               className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 text-lg"
             >

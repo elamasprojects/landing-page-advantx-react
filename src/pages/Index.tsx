@@ -5,10 +5,11 @@ import ProcessSteps from '../components/ProcessSteps';
 import AutomationAssessment from '../components/AutomationAssessment';
 import Services from '../components/Services';
 import ROICalculator from '../components/ROICalculator';
-import Testimonials from '../components/Testimonials';
-import Team from '../components/Team';
+// import Testimonials from '../components/Testimonials';
+// import Team from '../components/Team';
 import FAQs from '../components/FAQs';
 import ContactCTA from '../components/ContactCTA';
+import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -20,10 +21,11 @@ const Index = () => {
       <AutomationAssessment />
       <Services />
       <ROICalculator />
-      <Testimonials />
-      <Team />
-      <FAQs />
+      {/* <Testimonials /> */}
+      {/* <Team /> */}
       <ContactCTA />
+      <FAQs />
+      <Newsletter />
       <Footer />
     </div>
   );

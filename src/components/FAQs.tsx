@@ -79,7 +79,7 @@ const FAQs = () => {
             ¿Tienes alguna otra pregunta?
           </p>
           <button 
-            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })}
             className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
           >
             Agenda una Consultoría Gratuita

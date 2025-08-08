@@ -155,7 +155,7 @@ const ContactCTA = () => {
     });
   };
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5491162379365', '_blank');
+    window.open('https://wa.me/5491157388695', '_blank');
   };
   return <>
       {/* Agenda Section */}
@@ -245,7 +245,8 @@ const ContactCTA = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section (hidden for now) */}
+      {false && (
       <section id="contacto" className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -355,8 +356,10 @@ const ContactCTA = () => {
           </div>
         </div>
       </section>
+      )}
 
-      {/* Newsletter Subscription */}
+      {/* Newsletter Subscription moved to end of page */}
+      {false && (
       <section className="py-16 bg-primary-600 dark:bg-primary-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
@@ -373,6 +376,7 @@ const ContactCTA = () => {
           </form>
         </div>
       </section>
+      )}
     </>;
 };
 export default ContactCTA;

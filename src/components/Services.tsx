@@ -100,7 +100,7 @@ const Services = () => {
             ¿Necesitas una solución personalizada?
           </p>
           <button 
-            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })}
             className="bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
           >
             Consultar Solución Personalizada

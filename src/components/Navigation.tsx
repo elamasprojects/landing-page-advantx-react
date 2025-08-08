@@ -87,7 +87,7 @@ const Navigation = () => {
               </a>
             </Button>
             <Button 
-              onClick={() => scrollToSection('contacto')}
+              onClick={() => window.open('https://wa.me/5491157388695','_blank')}
               className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105"
             >
               Contáctanos
@@ -153,7 +153,7 @@ const Navigation = () => {
                 </a>
               </Button>
               <Button 
-                onClick={() => scrollToSection('contacto')}
+                onClick={() => window.open('https://wa.me/5491157388695','_blank')}
                 className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-full font-medium w-full"
               >
                 Contáctanos

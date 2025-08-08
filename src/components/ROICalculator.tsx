@@ -174,7 +174,7 @@ const ROICalculator = () => {
                 </div>
 
                 <Button 
-                  onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => document.getElementById('agenda')?.scrollIntoView({ behavior: 'smooth' })}
                   className="w-full bg-primary-600 hover:bg-primary-700"
                   size="lg"
                 >

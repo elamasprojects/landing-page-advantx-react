@@ -5,16 +5,6 @@ import { Linkedin, Twitter } from 'lucide-react';
 const Team = () => {
   const founders = [
     {
-      name: "Juan Cruz Fernandez",
-      role: "CEO & Co-fundador",
-      bio: "5 años de experiencia en procesos y marketing digital. Abogacía en UBA.",
-      image: "/lovable-uploads/ebe1b7f2-996b-49e3-93d5-efe32499bdbb.png",
-      social: {
-        linkedin: "https://www.linkedin.com/in/juancruzferz/",
-        twitter: "#"
-      }
-    },
-    {
       name: "Ezequiel Lamas",
       role: "CTO & Co-fundador",
       bio: "Especialista en arquitecturas de IA escalables e integración de sistemas empresariales. Ingeniería Industrial en ITBA.",
@@ -41,7 +31,7 @@ const Team = () => {
         </div>
 
         {/* Founders */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 place-items-center gap-12">
           {founders.map((founder, index) => (
             <Card key={index} className="overflow-hidden hover:shadow-xl dark:hover:shadow-2xl transition-shadow dark:bg-slate-800 dark:border-slate-700">
               <CardContent className="p-8">
