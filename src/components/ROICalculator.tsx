@@ -8,9 +8,9 @@ import { Slider } from '@/components/ui/slider';
 import { Calculator, TrendingUp, Clock, DollarSign, Info, HelpCircle, Minus, Plus } from 'lucide-react';
 
 const ROICalculator = () => {
-  const [employees, setEmployees] = useState(10);
-  const [hoursPerDay, setHoursPerDay] = useState(2);
-  const [hourlyRate, setHourlyRate] = useState(25);
+  const [employees, setEmployees] = useState(2);
+  const [hoursPerDay, setHoursPerDay] = useState(4);
+  const [hourlyRate, setHourlyRate] = useState(10);
   const [showResults, setShowResults] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const calculateBtnRef = useRef<HTMLButtonElement | null>(null);
@@ -197,7 +197,7 @@ const ROICalculator = () => {
                     value={[employees]}
                     onValueChange={(v) => setEmployees(v[0] || 1)}
                     min={1}
-                    max={100}
+                    max={70}
                     step={1}
                   />
                   <Button
@@ -205,7 +205,7 @@ const ROICalculator = () => {
                     variant="outline"
                     size="icon"
                     aria-label="Aumentar empleados"
-                    onClick={() => setEmployees((v) => Math.min(100, v + 1))}
+                    onClick={() => setEmployees((v) => Math.min(70, v + 1))}
                   >
                     <Plus className="h-4 w-4" />
                   </Button>
