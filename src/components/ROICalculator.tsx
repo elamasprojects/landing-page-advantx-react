@@ -1,10 +1,11 @@
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Calculator, TrendingUp, Clock, DollarSign, Info, HelpCircle, Sparkles } from 'lucide-react';
+import { Slider } from '@/components/ui/slider';
+import { Calculator, TrendingUp, Clock, DollarSign, Info, HelpCircle, Minus, Plus } from 'lucide-react';
 
 const ROICalculator = () => {
   const [employees, setEmployees] = useState(10);
@@ -12,6 +13,93 @@ const ROICalculator = () => {
   const [hourlyRate, setHourlyRate] = useState(25);
   const [showResults, setShowResults] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const calculateBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  type ConfettiParticle = {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    size: number;
+    color: string;
+    alpha: number;
+    rotation: number;
+    vr: number;
+  };
+
+  const launchConfettiFromButton = () => {
+    try {
+      const btn = calculateBtnRef.current;
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.position = 'fixed';
+      canvas.style.left = '0';
+      canvas.style.top = '0';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '9999';
+      document.body.appendChild(canvas);
+
+      const colors = ['#7c3aed', '#9333ea', '#22c55e', '#eab308', '#3b82f6', '#ef4444'];
+      const particles: ConfettiParticle[] = [];
+      const particleCount = 80;
+      for (let i = 0; i < particleCount; i += 1) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 3 + Math.random() * 6;
+        particles.push({
+          x: originX,
+          y: originY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: 3 + Math.random() * 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1,
+          rotation: Math.random() * Math.PI,
+          vr: (Math.random() - 0.5) * 0.2,
+        });
+      }
+
+      const gravity = 0.15;
+      const drag = 0.985;
+      const start = performance.now();
+      const duration = 900; // ms
+
+      const animate = (time: number) => {
+        const elapsed = time - start;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p) => {
+          p.vx *= drag;
+          p.vy = p.vy * drag + gravity;
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rotation += p.vr;
+          p.alpha *= 0.985;
+          ctx.save();
+          ctx.globalAlpha = Math.max(p.alpha, 0);
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          ctx.restore();
+        });
+        if (elapsed < duration) {
+          requestAnimationFrame(animate);
+        } else {
+          document.body.removeChild(canvas);
+        }
+      };
+      requestAnimationFrame(animate);
+    } catch (_) {
+      // ignore if canvas is unavailable
+    }
+  };
 
   const playSuccessTone = () => {
     try {
@@ -35,6 +123,7 @@ const ROICalculator = () => {
   const handleCalculate = () => {
     setIsAnimating(true);
     playSuccessTone();
+    launchConfettiFromButton();
     setShowResults(true);
     setTimeout(() => setIsAnimating(false), 500);
   };
@@ -91,47 +180,130 @@ const ROICalculator = () => {
                 Ingresa los datos de tu empresa para calcular el ROI de la automatización
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 flex-1 flex flex-col">
               <div>
                 <Label htmlFor="employees">Número de empleados que realizan tareas repetitivas</Label>
+                <div className="mt-2 grid grid-cols-[auto_1fr_auto] items-center gap-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label="Disminuir empleados"
+                    onClick={() => setEmployees((v) => Math.max(1, v - 1))}
+                  >
+                    <Minus className="h-4 w-4" />
+                  </Button>
+                  <Slider
+                    value={[employees]}
+                    onValueChange={(v) => setEmployees(v[0] || 1)}
+                    min={1}
+                    max={100}
+                    step={1}
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label="Aumentar empleados"
+                    onClick={() => setEmployees((v) => Math.min(100, v + 1))}
+                  >
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
                 <Input
                   id="employees"
                   type="number"
                   value={employees}
-                  onChange={(e) => setEmployees(parseInt(e.target.value) || 0)}
+                  onChange={(e) => setEmployees(parseInt(e.target.value) || 1)}
                   className="mt-2"
-                  min="1"
+                  min={1}
                 />
               </div>
 
               <div>
                 <Label htmlFor="hours">Horas diarias dedicadas a tareas manuales (por empleado)</Label>
+                <div className="mt-2 grid grid-cols-[auto_1fr_auto] items-center gap-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label="Disminuir horas"
+                    onClick={() => setHoursPerDay((v) => Math.max(0.5, +(v - 0.5).toFixed(1)))}
+                  >
+                    <Minus className="h-4 w-4" />
+                  </Button>
+                  <Slider
+                    value={[hoursPerDay]}
+                    onValueChange={(v) => setHoursPerDay(v[0] || 0.5)}
+                    min={0.5}
+                    max={10}
+                    step={0.5}
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label="Aumentar horas"
+                    onClick={() => setHoursPerDay((v) => Math.min(10, +(v + 0.5).toFixed(1)))}
+                  >
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
                 <Input
                   id="hours"
                   type="number"
                   value={hoursPerDay}
-                  onChange={(e) => setHoursPerDay(parseInt(e.target.value) || 0)}
+                  onChange={(e) => setHoursPerDay(parseFloat(e.target.value) || 0.5)}
                   className="mt-2"
-                  min="0.5"
-                  step="0.5"
+                  min={0.5}
+                  step={0.5}
                 />
               </div>
 
               <div>
                 <Label htmlFor="rate">Costo por hora promedio (USD)</Label>
+                <div className="mt-2 grid grid-cols-[auto_1fr_auto] items-center gap-2">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label="Disminuir costo por hora"
+                    onClick={() => setHourlyRate((v) => Math.max(5, v - 5))}
+                  >
+                    <Minus className="h-4 w-4" />
+                  </Button>
+                  <Slider
+                    value={[hourlyRate]}
+                    onValueChange={(v) => setHourlyRate(v[0] || 5)}
+                    min={5}
+                    max={100}
+                    step={5}
+                  />
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="icon"
+                    aria-label="Aumentar costo por hora"
+                    onClick={() => setHourlyRate((v) => Math.min(100, v + 5))}
+                  >
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
                 <Input
                   id="rate"
                   type="number"
                   value={hourlyRate}
-                  onChange={(e) => setHourlyRate(parseInt(e.target.value) || 0)}
+                  onChange={(e) => setHourlyRate(parseInt(e.target.value) || 5)}
                   className="mt-2"
-                  min="5"
+                  min={5}
+                  step={5}
                 />
               </div>
 
               <Button 
+                ref={calculateBtnRef}
                 onClick={handleCalculate}
-                className="w-full bg-primary-600 hover:bg-primary-700"
+                className="mt-auto w-full bg-primary-600 hover:bg-primary-700"
                 size="lg"
               >
                 Calcular ROI
@@ -240,19 +412,7 @@ const ROICalculator = () => {
                     <div className="h-8 w-40 bg-gray-200 dark:bg-slate-700 rounded animate-pulse" />
                   </div>
 
-                  {/* Blurred overlay with question mark */}
-                  <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center backdrop-blur-[2px]">
-                    <HelpCircle className="w-16 h-16 text-primary-600/70 dark:text-primary-400/70 animate-pulse" />
-                    <span className="mt-2 text-primary-700 dark:text-primary-300 text-sm">¿Listo para calcular?</span>
-                  </div>
-
-                  {/* Interactive animated chip */}
-                  <div className="absolute bottom-4 right-4">
-                    <button type="button" className="inline-flex items-center gap-1 rounded-full bg-primary-600 text-white px-3 py-1 text-xs shadow hover:shadow-md hover:scale-105 active:scale-95 transition transform focus:outline-none focus:ring-2 focus:ring-primary-400 animate-bounce">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      Listo para calcular
-                    </button>
-                  </div>
+                  {/* Placeholder overlay intentionally removed per request */}
                 </CardContent>
               </>
             )}
