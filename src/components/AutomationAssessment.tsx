@@ -26,6 +26,35 @@ const AutomationAssessment = () => {
     timeline: ''
   });
   const [showResults, setShowResults] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  const startPhrases = [
+    'lanzar formulario',
+    'calcular la automatización',
+    'buscar mi mejor automatización'
+  ];
+
+  const normalize = (s: string) => s
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .trim();
+
+  const shouldStartFor = (text: string) => {
+    const normalized = normalize(text);
+    return startPhrases.some(p => normalized.includes(normalize(p)));
+  };
+
+  const handleStartExplicit = () => setHasStarted(true);
+
+  const handleDelegatedStart: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    const target = e.target as HTMLElement | null;
+    if (!target) return;
+    const text = target.innerText || '';
+    if (shouldStartFor(text)) {
+      setHasStarted(true);
+    }
+  };
 
   const questions = [
     {
@@ -304,6 +333,41 @@ const AutomationAssessment = () => {
               Solicitar Consulta Gratuita
             </Button>
           </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!hasStarted) {
+    return (
+      <section className="py-24 bg-gradient-to-br from-primary-50 to-purple-50 dark:from-slate-900 dark:to-primary-900/10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              ¿Cuál es tu mejor automatización?
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Empezá el formulario para descubrir tus mejores oportunidades de automatización.
+            </p>
+          </div>
+          <Card className="max-w-2xl mx-auto">
+            <CardContent className="p-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center" onClick={handleDelegatedStart}>
+                <Button onClick={handleStartExplicit} className="w-full">
+                  Lanzar formulario
+                </Button>
+                <Button onClick={handleStartExplicit} variant="outline" className="w-full">
+                  Calcular la automatización
+                </Button>
+                <Button onClick={handleStartExplicit} variant="secondary" className="w-full">
+                  Buscar mi mejor automatización
+                </Button>
+              </div>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
+                Tip: si ves otro botón con un texto similar, también iniciará el formulario.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
     );

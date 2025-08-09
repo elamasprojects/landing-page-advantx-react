@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Calendar, MessageCircle, Phone, Mail, Clock, CheckCircle } from 'lucide-react';
+import { MessageCircle, Phone, Mail, CheckCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -22,39 +22,11 @@ const ContactCTA = () => {
     toast
   } = useToast();
 
-  // Load Cal.com embed script
+  // Load Calendly embed script
   useEffect(() => {
     const script = document.createElement('script');
-    script.innerHTML = `
-      (function (C, A, L) { 
-        let p = function (a, ar) { a.q.push(ar); }; 
-        let d = C.document; 
-        C.Cal = C.Cal || function () { 
-          let cal = C.Cal; 
-          let ar = arguments; 
-          if (!cal.loaded) { 
-            cal.ns = {}; 
-            cal.q = cal.q || []; 
-            d.head.appendChild(d.createElement("script")).src = A; 
-            cal.loaded = true; 
-          } 
-          if (ar[0] === L) { 
-            const api = function () { p(api, arguments); }; 
-            const namespace = ar[1]; 
-            api.q = api.q || []; 
-            if(typeof namespace === "string"){
-              cal.ns[namespace] = cal.ns[namespace] || api;
-              p(cal.ns[namespace], ar);
-              p(cal, ["initNamespace", namespace]);
-            } else p(cal, ar); 
-            return;
-          } 
-          p(cal, ar); 
-        }; 
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "30min", {origin:"https://app.cal.com"});
-      Cal.ns["30min"]("ui", {"theme":"dark","hideEventTypeDetails":true,"layout":"month_view"});
-    `;
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
     document.head.appendChild(script);
     return () => {
       document.head.removeChild(script);
@@ -158,89 +130,68 @@ const ContactCTA = () => {
     window.open('https://wa.me/5491157388695', '_blank');
   };
   return <>
-      {/* Agenda Section */}
+      {/* Agenda Section with Calendly */}
       <section id="agenda" className="py-20 bg-gradient-to-br from-primary-900 to-purple-900 dark:from-primary-950 dark:to-purple-950 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Agenda tu Consultoría
-              <span className="bg-gradient-to-r from-primary-300 to-purple-300 bg-clip-text text-transparent"> Gratuita</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              En 30 minutos identificaremos oportunidades de automatización que pueden ahorrar miles de dólares a tu empresa
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Agenda de tu consultoría gratuita</h2>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+              En 20 minutos, identificaremos oportunidades de automatización que pueden ahorrar miles de dólares a tu empresa
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Benefits */}
-            <div className="lg:col-span-1 space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary-500 p-2 rounded-lg">
-                  <CheckCircle className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-2">Análisis Gratuito</h3>
-                  <p className="text-gray-300">Evaluación completa de tus procesos sin costo</p>
-                </div>
+          {/* Calendly Inline Embed */}
+          <div className="flex justify-center mb-10">
+            <div
+              className="calendly-inline-widget w-full"
+              data-url="https://calendly.com/advant_x/ezequiellamas?hide_gdpr_banner=1&primary_color=7806ea"
+              style={{ minWidth: '320px', height: '700px' }}
+            />
+          </div>
+
+          {/* Benefits Row below calendar */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+            <div className="flex items-start gap-3">
+              <div className="bg-primary-500/20 p-2 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-primary-300" />
               </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary-500 p-2 rounded-lg">
-                  <Clock className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-2">30 Minutos</h3>
-                  <p className="text-gray-300">Sesión enfocada y productiva</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary-500 p-2 rounded-lg">
-                  <Calendar className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-2">Horario Flexible</h3>
-                  <p className="text-gray-300">Disponible de lunes a viernes</p>
-                </div>
+              <div>
+                <h3 className="font-semibold">Análisis gratuito</h3>
               </div>
             </div>
-
-            {/* Scheduling Options */}
-            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-white">
-                    <Calendar className="w-6 h-6" />
-                    Videollamada
-                  </CardTitle>
-                  <CardDescription className="text-gray-300">
-                    Reunión virtual por Zoom o Google Meet
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Button className="w-full bg-primary-600 hover:bg-primary-700" data-cal-link="advantx/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","theme":"dark"}'>
-                    Agendar Videollamada
-                  </Button>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-white">
-                    <Phone className="w-6 h-6" />
-                    WhatsApp
-                  </CardTitle>
-                  <CardDescription className="text-gray-300">
-                    Comunicación directa por WhatsApp
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Button variant="outline" onClick={handleWhatsAppClick} className="w-full border-green text-zinc-50 bg-green-700 hover:bg-green-600 text-center rounded-md">
-                    Contactar por WhatsApp
-                  </Button>
-                </CardContent>
-              </Card>
+            <div className="flex items-start gap-3">
+              <div className="bg-primary-500/20 p-2 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-primary-300" />
+              </div>
+              <div>
+                <h3 className="font-semibold">20 minutos</h3>
+              </div>
             </div>
+            <div className="flex items-start gap-3">
+              <div className="bg-primary-500/20 p-2 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-primary-300" />
+              </div>
+              <div>
+                <h3 className="font-semibold">Sesión enfocada y productiva</h3>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="bg-primary-500/20 p-2 rounded-lg">
+                <CheckCircle className="w-6 h-6 text-primary-300" />
+              </div>
+              <div>
+                <h3 className="font-semibold">Horario flexible</h3>
+              </div>
+            </div>
+          </div>
+
+          {/* WhatsApp CTA below */}
+          <div className="text-center">
+            <p className="text-gray-300 mb-4">O también nos puedes contactar por Whatsapp</p>
+            <Button onClick={handleWhatsAppClick} className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700">
+              <Phone className="w-4 h-4" />
+              Abrir WhatsApp
+            </Button>
           </div>
         </div>
       </section>
