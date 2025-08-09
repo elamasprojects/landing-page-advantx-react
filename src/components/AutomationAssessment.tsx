@@ -355,9 +355,6 @@ const AutomationAssessment = () => {
                   Buscar mi mejor automatización
                 </Button>
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 text-center">
-                Tip: si ves otro botón con un texto similar, también iniciará el formulario.
-              </p>
             </CardContent>
           </Card>
         </div>
