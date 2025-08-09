@@ -29,8 +29,6 @@ const AutomationAssessment = () => {
   const [hasStarted, setHasStarted] = useState(false);
 
   const startPhrases = [
-    'lanzar formulario',
-    'calcular la automatización',
     'buscar mi mejor automatización'
   ];
 
@@ -352,13 +350,7 @@ const AutomationAssessment = () => {
           </div>
           <Card className="max-w-2xl mx-auto">
             <CardContent className="p-8">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center" onClick={handleDelegatedStart}>
-                <Button onClick={handleStartExplicit} className="w-full">
-                  Lanzar formulario
-                </Button>
-                <Button onClick={handleStartExplicit} variant="outline" className="w-full">
-                  Calcular la automatización
-                </Button>
+              <div className="grid grid-cols-1 gap-3 text-center" onClick={handleDelegatedStart}>
                 <Button onClick={handleStartExplicit} variant="secondary" className="w-full">
                   Buscar mi mejor automatización
                 </Button>

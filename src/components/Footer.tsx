@@ -1,5 +1,5 @@
 
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Youtube, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -23,14 +23,14 @@ const Footer = () => {
               Transformamos empresas con soluciones de automatización e inteligencia artificial de vanguardia.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors">
+              <a href="#" className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors">
-                <Twitter className="w-5 h-5" />
+              <a href="#" className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors" aria-label="YouTube">
+                <Youtube className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors">
-                <Facebook className="w-5 h-5" />
+              <a href="#" className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors" aria-label="Instagram">
+                <Instagram className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -39,11 +39,12 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Servicios</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-primary-400 transition-colors">Chatbots Inteligentes</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-colors">Automatización de Procesos</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-colors">Análisis Predictivo</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-colors">Procesamiento de Documentos</a></li>
-              <li><a href="#" className="hover:text-primary-400 transition-colors">Asistentes Virtuales</a></li>
+              <li><button onClick={() => scrollToSection('servicios')} className="hover:text-primary-400 transition-colors text-left">Chatbots Inteligentes</button></li>
+              <li><button onClick={() => scrollToSection('servicios')} className="hover:text-primary-400 transition-colors text-left">AI Setter</button></li>
+              <li><button onClick={() => scrollToSection('servicios')} className="hover:text-primary-400 transition-colors text-left">Agentes de Voz</button></li>
+              <li><button onClick={() => scrollToSection('servicios')} className="hover:text-primary-400 transition-colors text-left">Procesamiento de Documentos</button></li>
+              <li><button onClick={() => scrollToSection('servicios')} className="hover:text-primary-400 transition-colors text-left">Landing Page</button></li>
+              <li><button onClick={() => scrollToSection('servicios')} className="hover:text-primary-400 transition-colors text-left">Web App</button></li>
             </ul>
           </div>
 
@@ -61,14 +62,6 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => scrollToSection('sobre-nosotros')}
-                  className="hover:text-primary-400 transition-colors text-left"
-                >
-                  Sobre Nosotros
-                </button>
-              </li>
-              <li>
-                <button 
                   onClick={() => scrollToSection('faqs')}
                   className="hover:text-primary-400 transition-colors text-left"
                 >
@@ -77,10 +70,10 @@ const Footer = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => scrollToSection('contacto')}
+                  onClick={() => scrollToSection('agenda')}
                   className="hover:text-primary-400 transition-colors text-left"
                 >
-                  Contacto
+                  Agenda tu Consultoría
                 </button>
               </li>
               <li>

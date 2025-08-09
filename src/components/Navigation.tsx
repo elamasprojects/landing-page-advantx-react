@@ -53,12 +53,14 @@ const Navigation = () => {
               >
                 Agenda
               </button>
-              <button 
-                onClick={() => scrollToSection('sobre-nosotros')}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Sobre nosotros
-              </button>
+              {/**
+               * <button 
+               *   onClick={() => scrollToSection('sobre-nosotros')}
+               *   className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 text-sm font-medium transition-colors"
+               * >
+               *   Sobre nosotros
+               * </button>
+               */}
               <Link 
                 to="/blog"
                 className="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 text-sm font-medium transition-colors"
@@ -123,12 +125,14 @@ const Navigation = () => {
             >
               Agenda
             </button>
-            <button 
-              onClick={() => scrollToSection('sobre-nosotros')}
-              className="block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 text-base font-medium w-full text-left"
-            >
-              Sobre nosotros
-            </button>
+            {/**
+             * <button 
+             *   onClick={() => scrollToSection('sobre-nosotros')}
+             *   className="block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 text-base font-medium w-full text-left"
+             * >
+             *   Sobre nosotros
+             * </button>
+             */}
             <Link 
               to="/blog"
               className="block text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 text-base font-medium"

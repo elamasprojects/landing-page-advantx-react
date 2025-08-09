@@ -36,7 +36,7 @@ const ProcessSteps = () => {
             <span className="bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 bg-clip-text text-transparent"> 3 Pasos</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Un proceso probado que garantiza resultados desde el primer día
+            Un proceso simple que garantiza una implementación rápida y funcional en menos de 30 días
           </p>
         </div>
 

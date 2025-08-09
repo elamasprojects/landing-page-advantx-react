@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { MessageCircle, Phone, Mail, CheckCircle } from 'lucide-react';
+import { MessageCircle, Phone, Mail, CheckCircle, AlertTriangle, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
@@ -134,7 +134,9 @@ const ContactCTA = () => {
       <section id="agenda" className="py-20 bg-gradient-to-br from-primary-900 to-purple-900 dark:from-primary-950 dark:to-purple-950 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">Agenda de tu consultoría gratuita</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Agenda tu
+              <span className="bg-gradient-to-r from-primary-300 to-purple-300 bg-clip-text text-transparent"> consultoría gratuita</span>
+            </h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
               En 20 minutos, identificaremos oportunidades de automatización que pueden ahorrar miles de dólares a tu empresa
             </p>
@@ -149,39 +151,19 @@ const ContactCTA = () => {
             />
           </div>
 
-          {/* Benefits Row below calendar */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-            <div className="flex items-start gap-3">
-              <div className="bg-primary-500/20 p-2 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-primary-300" />
+          {/* Notice: icon above, centered text, no background box */}
+          <div className="mb-10">
+            <div className="max-w-5xl mx-auto text-center">
+              <div className="flex justify-center mb-4" aria-hidden="true">
+                <AlertTriangle className="h-8 w-8 text-amber-400" />
               </div>
-              <div>
-                <h3 className="font-semibold">Análisis gratuito</h3>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="bg-primary-500/20 p-2 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-primary-300" />
-              </div>
-              <div>
-                <h3 className="font-semibold">20 minutos</h3>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="bg-primary-500/20 p-2 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-primary-300" />
-              </div>
-              <div>
-                <h3 className="font-semibold">Sesión enfocada y productiva</h3>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="bg-primary-500/20 p-2 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-primary-300" />
-              </div>
-              <div>
-                <h3 className="font-semibold">Horario flexible</h3>
-              </div>
+              <p className="text-base md:text-lg leading-relaxed text-white/90">
+                Lo peor que puede pasar en esta llamada es que te lleves un diagrama claro de los procesos y automatizaciones aplicables a tu negocio para que los uses, ya sea con nosotros, con otra empresa o por tu cuenta.
+              </p>
+              <p className="text-base md:text-lg leading-relaxed text-white/90 mt-3">
+                No podemos garantizar que siga siendo así, pero por ahora es gratis y sin compromiso.
+              </p>
+              <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-amber-300/60 to-transparent" />
             </div>
           </div>
 

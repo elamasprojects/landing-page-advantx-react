@@ -1,6 +1,6 @@
 
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Zap, Shield, TrendingUp } from 'lucide-react';
+import { ArrowRight, Zap, Shield, TrendingUp, DollarSign, Clock } from 'lucide-react';
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -27,16 +27,56 @@ const Hero = () => {
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 animate-fade-in text-balance">
           <span className="block bg-gradient-to-r from-primary-600 via-purple-600 to-blue-600 dark:from-primary-400 dark:via-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
-            Duplicá tus ingresos y reducí tus costos con IA
+            Automatizá todo tu proceso de ventas con IA
           </span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl mx-auto animate-fade-in">
-          Transformamos tu empresa con soluciones de inteligencia artificial que eliminan tareas repetitivas y potencian tu crecimiento exponencial.
-        </p>
+        {/* Subtitle (styled list, centered) */}
+        <div className="mb-12 max-w-5xl mx-auto animate-fade-in text-pretty">
+          <ul className="grid gap-6 text-center">
+            <li className="flex flex-col items-center gap-3">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-green-50 text-green-700 ring-1 ring-green-500/20 dark:bg-green-500/15 dark:text-green-300">
+                <DollarSign className="h-4 w-4" />
+              </span>
+              <div className="space-y-1">
+                <span className="block text-lg md:text-xl font-semibold tracking-tight bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent dark:from-green-400 dark:to-emerald-400">
+                  Reduciendo un 50% los costos
+                </span>
+                <span className="block text-base md:text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                  la IA responde como un humano en su mejor humor por una fracción del costo. No te cobra extra los findes y feriados y no falta nunca.
+                </span>
+              </div>
+            </li>
+            <li className="flex flex-col items-center gap-3">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-blue-50 text-blue-700 ring-1 ring-blue-500/20 dark:bg-blue-500/15 dark:text-blue-300">
+                <Clock className="h-4 w-4" />
+              </span>
+              <div className="space-y-1">
+                <span className="block text-lg md:text-xl font-semibold tracking-tight bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-400">
+                  Mejorando la tasa de respuesta
+                </span>
+                <span className="block text-base md:text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                  un cliente al que se le responde rápido es un cliente que no se va con la competencia.
+                </span>
+              </div>
+            </li>
+            <li className="flex flex-col items-center gap-3">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-purple-50 text-purple-700 ring-1 ring-purple-500/20 dark:bg-purple-500/15 dark:text-purple-300">
+                <TrendingUp className="h-4 w-4" />
+              </span>
+              <div className="space-y-1">
+                <span className="block text-lg md:text-xl font-semibold tracking-tight bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent dark:from-purple-400 dark:to-pink-400">
+                  Aumentando las ventas
+                </span>
+                <span className="block text-base md:text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                  las personas consultan y compran casi siempre fuera del horario 9-5; nuestro chatbot vende 24/7.
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in">
