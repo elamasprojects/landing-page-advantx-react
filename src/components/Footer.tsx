@@ -23,13 +23,34 @@ const Footer = () => {
               Transformamos empresas con soluciones de automatización e inteligencia artificial de vanguardia.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors" aria-label="LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/ezequiel-lamas-ab5568256/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors" aria-label="YouTube">
+              <a
+                href="https://www.youtube.com/@ezequiellamass"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors"
+                aria-label="YouTube"
+                title="YouTube"
+              >
                 <Youtube className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors" aria-label="Instagram">
+              <a
+                href="https://www.instagram.com/ezequiellamass"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-primary-600 hover:bg-primary-700 rounded-full flex items-center justify-center transition-colors"
+                aria-label="Instagram"
+                title="Instagram"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
             </div>

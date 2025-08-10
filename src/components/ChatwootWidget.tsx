@@ -1,3 +1,5 @@
+/*
+
 import { useEffect } from 'react';
 
 declare global {
@@ -159,4 +161,6 @@ const ChatwootWidget = () => {
   return null; // This component doesn't render anything visible
 };
 
-export default ChatwootWidget; 
+export default ChatwootWidget;
+
+*/

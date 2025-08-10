@@ -10,21 +10,18 @@ const Services = () => {
       title: "Chatbots Inteligentes",
       description: "Automatización de atención al cliente 24/7 con IA conversacional avanzada que resuelve consultas complejas.",
       features: ["Procesamiento de lenguaje natural", "Integración multicanal", "Aprendizaje continuo"],
-      badge: "Landing Page Bonificada"
     },
     {
       icon: Target,
       title: "AI Setter",
       description: "Un agente de IA que prospecta por vos y agenda llamadas de venta para tu negocio de forma completamente automatizada.",
       features: ["Prospección automática", "Calificación de leads", "Agenda de reuniones automática"],
-      badge: "Landing Page Bonificada"
     },
     {
       icon: Phone,
       title: "Agentes de Voz",
       description: "Asistentes de IA conversacionales que pueden realizar llamadas automáticas y manejar interacciones de voz complejas.",
       features: ["Reconocimiento de voz avanzado", "Conversaciones naturales", "Integración telefónica"],
-      badge: "Landing Page Bonificada"
     },
     {
       icon: FileText,
