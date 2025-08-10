@@ -33,7 +33,7 @@ const Hero = () => {
             <span className="bg-gradient-to-r from-primary-600 via-purple-600 to-blue-600 dark:from-primary-400 dark:via-purple-400 dark:to-blue-400 bg-clip-text text-transparent">Automatiza</span>{" "}
             tu{" "}
             <span className="text-gray-800 dark:text-gray-100">proceso de</span>
-            <br className="hidden md:block" />
+            <br />
             <span className="whitespace-nowrap">
               <span className="text-gray-800 dark:text-gray-100">ventas</span>{" "}con{" "}
               <span className="bg-gradient-to-r from-primary-600 via-purple-600 to-blue-600 dark:from-primary-400 dark:via-purple-400 dark:to-blue-400 bg-clip-text text-transparent">IA</span>
@@ -68,8 +68,8 @@ const Hero = () => {
           </Button>
         </div>
 
-        {/* Trust Indicators */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in">
+        {/* Trust Indicators (hidden on mobile) */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in">
           <div className="flex items-center justify-center space-x-3">
             <div className="bg-primary-100 dark:bg-primary-500/20 p-3 rounded-full">
               <Shield className="w-6 h-6 text-primary-600 dark:text-primary-400" />
