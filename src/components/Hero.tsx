@@ -30,7 +30,7 @@ const Hero = () => {
         {/* Main Headline */}
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-800 dark:text-gray-100 mb-6 animate-fade-in leading-tight max-w-7xl mx-auto lg:max-w-none lg:w-[92vw] lg:relative lg:left-1/2 lg:-translate-x-1/2">
           <span className="block">
-            <span className="bg-gradient-to-r from-primary-600 via-purple-600 to-blue-600 dark:from-primary-400 dark:via-purple-400 dark:to-blue-400 bg-clip-text text-transparent">Automatiza</span>{" "}
+            <span className="bg-gradient-to-r from-primary-600 via-purple-600 to-blue-600 dark:from-primary-400 dark:via-purple-400 dark:to-blue-400 bg-clip-text text-transparent">Automatizá</span>{" "}
             tu{" "}
             <span className="text-gray-800 dark:text-gray-100">proceso de</span>
             <br />
