@@ -1,5 +1,3 @@
-/*
-
 import { useEffect } from 'react';
 
 declare global {
@@ -163,4 +161,3 @@ const ChatwootWidget = () => {
 
 export default ChatwootWidget;
 
-*/
