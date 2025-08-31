@@ -84,7 +84,7 @@ const Navigation = () => {
               variant="outline"
               className="border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 px-6 py-2 rounded-full font-medium transition-all transform hover:scale-105"
             >
-              <a href="https://app.advantx.co" target="_blank" rel="noopener noreferrer">
+              <a href="https://clientes.advantx.co" target="_blank" rel="noopener noreferrer">
                 Login
               </a>
             </Button>
@@ -152,7 +152,7 @@ const Navigation = () => {
                 variant="outline"
                 className="border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 px-6 py-2 rounded-full font-medium w-full"
               >
-                <a href="https://app.advantx.co" target="_blank" rel="noopener noreferrer">
+                <a href="https://clientes.advantx.co" target="_blank" rel="noopener noreferrer">
                   Login
                 </a>
               </Button>
