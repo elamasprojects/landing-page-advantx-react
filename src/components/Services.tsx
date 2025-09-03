@@ -1,7 +1,7 @@
 
 import { Bot, BarChart3, Workflow, MessageSquare, FileText, Zap, Phone, Target, Globe, Smartphone } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+
 
 const Services = () => {
   const services = [
@@ -61,11 +61,6 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <Card key={index} className="group hover:shadow-xl dark:hover:shadow-2xl transition-all duration-300 border-0 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:scale-105 relative">
-              {service.badge && (
-                <Badge variant="secondary" className="absolute top-3 right-3 z-10 text-xs bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                  {service.badge}
-                </Badge>
-              )}
               <CardHeader>
                 <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-purple-600 dark:from-primary-400 dark:to-purple-500 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <service.icon className="w-8 h-8 text-white" />
