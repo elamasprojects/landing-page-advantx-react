@@ -59,11 +59,11 @@ const ClientHubSection = () => {
 
             {/* CTA Button */}
             <Button 
-              onClick={() => scrollToSection('agenda')}
+              onClick={() => window.location.href = '/client-hub'}
               className="bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
               size="lg"
             >
-              Learn More About Client Hub
+              Conocé más sobre Client Hub
             </Button>
           </div>
 
