@@ -1,5 +1,6 @@
 import { Check, ArrowRight, Shield, Clock, DollarSign, BarChart3, Calendar, FolderOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Timeline } from '@/components/ui/timeline';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
@@ -46,7 +47,7 @@ const ClientHub = () => {
 
   const securityFeatures = [
     "Acceso exclusivo con credenciales únicas",
-    "Encriptación nivel bancario",
+    "Auth seguro y encriptado con RLS policies",
     "Solo tú y tu equipo autorizado",
     "Respaldos automáticos"
   ];
@@ -62,20 +63,20 @@ const ClientHub = () => {
     { question: "¿Hay costo adicional?", answer: "No, está incluido en tu implementación" },
     { question: "¿Funciona en móvil?", answer: "Sí, completamente responsive" },
     { question: "¿Mi equipo puede acceder?", answer: "Sí, múltiples usuarios permitidos" },
-    { question: "¿Los datos son seguros?", answer: "Encriptación nivel bancario" }
+    { question: "¿Los datos son seguros?", answer: "Auth seguro y encriptado con RLS policies" }
   ];
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-gray-50 to-primary-50 dark:from-slate-900 dark:to-primary-900/10 relative overflow-hidden">
+      {/* Header Section */}
+      <section className="pt-32 pb-12 bg-gradient-to-br from-gray-50 to-primary-50 dark:from-slate-900 dark:to-primary-900/10 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-purple-600/10 to-primary-600/10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center max-w-4xl mx-auto">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-primary-100 to-purple-100 dark:from-primary-900/30 dark:to-purple-900/30 text-primary-700 dark:text-primary-300 text-sm font-medium mb-8">
-              🎯 Tu Comando Central para la Transformación de IA
+              🎯 Client Hub: Tu Portal de Proyecto, 100% personalizado
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-8">
@@ -88,15 +89,45 @@ const ClientHub = () => {
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
               ¿Cansado de proyectos tecnológicos que son "cajas negras"? Con Client Hub, tienes control total y visibilidad 100% transparente de tu implementación de IA.
             </p>
+          </div>
+        </div>
+      </section>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-to-r from-primary-600 to-purple-600 hover:from-primary-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
-                Solicitar Propuesta + Access Client Hub
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 px-8 py-4 rounded-full font-semibold">
-                Agendar Demo del Dashboard
-              </Button>
+      {/* Dashboard Images Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div className="space-y-8">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-slate-700">
+                <img 
+                  src="/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png" 
+                  alt="Dashboard Principal" 
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+              <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-slate-700">
+                <img 
+                  src="/lovable-uploads/41c83a3f-366e-497b-8828-1c5df8dfc1f6.png" 
+                  alt="Centro de Ayuda" 
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+            </div>
+            <div className="space-y-8">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-slate-700">
+                <img 
+                  src="/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png" 
+                  alt="Calendario" 
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+              <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-slate-700">
+                <img 
+                  src="/lovable-uploads/2079ad8f-d5f2-46a7-b6c4-3883b4c97f5a.png" 
+                  alt="Perfil de Usuario" 
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -107,9 +138,9 @@ const ClientHub = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              🔥 Lo Que Verás en Tu{' '}
+              Portal All-in-one para tu{' '}
               <span className="bg-gradient-to-r from-primary-600 to-purple-600 dark:from-primary-400 dark:to-purple-400 bg-clip-text text-transparent">
-                Dashboard Personal
+                Proyecto
               </span>
             </h2>
           </div>
@@ -196,7 +227,7 @@ const ClientHub = () => {
                 <Shield className="w-6 h-6 text-white" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-                🔒 Tu Información, Segura y Privada
+                Tu Información, Segura y Privada
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -215,32 +246,6 @@ const ClientHub = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-primary-50 dark:from-slate-900 dark:to-primary-900/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-16">
-            💡 Lo Que Dicen Nuestros Clientes
-          </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-slate-700">
-              <p className="text-gray-600 dark:text-gray-300 mb-6 italic leading-relaxed">
-                "Por primera vez en un proyecto de tecnología, sabía exactamente dónde estaba mi dinero y qué resultados estaba obteniendo. Ver $12K ahorrados cada mes en el dashboard me convenció de expandir a más áreas."
-              </p>
-              <div className="font-semibold text-gray-900 dark:text-white">
-                — CFO, Manufacturing Company
-              </div>
-            </div>
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-slate-700">
-              <p className="text-gray-600 dark:text-gray-300 mb-6 italic leading-relaxed">
-                "El Client Hub me ahorró 5 horas semanales de reuniones de seguimiento. Todo lo que necesitaba saber estaba ahí, actualizado en tiempo real."
-              </p>
-              <div className="font-semibold text-gray-900 dark:text-white">
-                — Operations Director
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* How It Works */}
       <section className="py-20">
@@ -251,17 +256,36 @@ const ClientHub = () => {
               (Súper Simple)
             </span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-4">
-                  {index + 1}
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {step}
-                </p>
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <Timeline
+              items={[
+                {
+                  id: "1",
+                  title: "Firmamos el contrato",
+                  description: "Recibes credenciales de acceso",
+                  status: "completed"
+                },
+                {
+                  id: "2", 
+                  title: "Día 1",
+                  description: "Tu dashboard está activo con info básica",
+                  status: "completed"
+                },
+                {
+                  id: "3",
+                  title: "Cada día",
+                  description: "Ve progreso actualizado y ROI en tiempo real", 
+                  status: "active"
+                },
+                {
+                  id: "4",
+                  title: "24/7",
+                  description: "Acceso completo desde cualquier dispositivo",
+                  status: "pending"
+                }
+              ]}
+              variant="spacious"
+            />
           </div>
         </div>
       </section>
@@ -270,7 +294,7 @@ const ClientHub = () => {
       <section className="py-20 bg-gradient-to-r from-primary-600 via-purple-600 to-primary-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            ⚡ Ready Para Transparencia Total?
+            ⚡ Listo Para Transparencia Total?
           </h2>
           <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
             "El Client Hub está incluido sin costo adicional en todas nuestras implementaciones de IA. Es nuestra forma de demostrar confianza total en nuestro trabajo."
@@ -279,9 +303,6 @@ const ClientHub = () => {
             <Button size="lg" className="bg-white text-primary-600 hover:bg-gray-50 px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
               Solicitar Propuesta + Access Client Hub
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold">
-              Agendar Demo del Dashboard
             </Button>
           </div>
         </div>
