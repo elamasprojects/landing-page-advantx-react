@@ -1,6 +1,8 @@
 import { Check, ArrowRight, Shield, Clock, DollarSign, BarChart3, Calendar, FolderOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Timeline } from '@/components/ui/timeline';
+import { GlareCard } from '@/components/ui/glare-card';
+import { cn } from "@/lib/utils";
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
@@ -96,51 +98,35 @@ const ClientHub = () => {
       {/* Dashboard Images Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div className="space-y-8">
-              <div className="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 rounded-2xl p-4 shadow-2xl border border-purple-500/20">
-                <img 
-                  src="/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png" 
-                  alt="Dashboard Principal" 
-                  className="w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    filter: 'sepia(0.3) saturate(1.2) hue-rotate(240deg) brightness(0.9) contrast(1.1)'
-                  }}
-                />
-              </div>
-              <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-violet-900 rounded-2xl p-4 shadow-2xl border border-purple-500/20">
-                <img 
-                  src="/lovable-uploads/41c83a3f-366e-497b-8828-1c5df8dfc1f6.png" 
-                  alt="Centro de Ayuda" 
-                  className="w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    filter: 'sepia(0.3) saturate(1.2) hue-rotate(240deg) brightness(0.9) contrast(1.1)'
-                  }}
-                />
-              </div>
-            </div>
-            <div className="space-y-8">
-              <div className="bg-gradient-to-br from-violet-900 via-purple-900 to-fuchsia-900 rounded-2xl p-4 shadow-2xl border border-purple-500/20">
-                <img 
-                  src="/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png" 
-                  alt="Calendario" 
-                  className="w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    filter: 'sepia(0.3) saturate(1.2) hue-rotate(240deg) brightness(0.9) contrast(1.1)'
-                  }}
-                />
-              </div>
-              <div className="bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 rounded-2xl p-4 shadow-2xl border border-purple-500/20">
-                <img 
-                  src="/lovable-uploads/2079ad8f-d5f2-46a7-b6c4-3883b4c97f5a.png" 
-                  alt="Perfil de Usuario" 
-                  className="w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    filter: 'sepia(0.3) saturate(1.2) hue-rotate(240deg) brightness(0.9) contrast(1.1)'
-                  }}
-                />
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center mb-16">
+            <GlareCard className="flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png" 
+                alt="Dashboard Principal" 
+                className="w-full h-full object-cover"
+              />
+            </GlareCard>
+            <GlareCard className="flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/41c83a3f-366e-497b-8828-1c5df8dfc1f6.png" 
+                alt="Centro de Ayuda" 
+                className="w-full h-full object-cover"
+              />
+            </GlareCard>
+            <GlareCard className="flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png" 
+                alt="Calendario" 
+                className="w-full h-full object-cover"
+              />
+            </GlareCard>
+            <GlareCard className="flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/2079ad8f-d5f2-46a7-b6c4-3883b4c97f5a.png" 
+                alt="Perfil de Usuario" 
+                className="w-full h-full object-cover"
+              />
+            </GlareCard>
           </div>
         </div>
       </section>
@@ -157,53 +143,65 @@ const ClientHub = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 max-w-7xl mx-auto">
             {features.map((feature, index) => {
               const IconComponent = feature.icon;
               return (
-                <div key={index} className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-slate-700">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary-600 to-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <IconComponent className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                        {feature.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                        {feature.description}
-                      </p>
-                      {feature.example && (
-                        <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
-                          <p className="text-green-800 dark:text-green-300 font-medium text-sm">
-                            {feature.example}
-                          </p>
-                        </div>
-                      )}
-                      {feature.phases && (
-                        <div className="space-y-3 mt-4">
-                          {feature.phases.map((phase, phaseIndex) => (
-                            <div key={phaseIndex} className="flex items-center gap-3">
-                              <div className={`w-4 h-4 rounded-full flex-shrink-0 ${
-                                phase.status === 'completed' ? 'bg-green-500' :
-                                phase.status === 'progress' ? 'bg-yellow-500' : 'bg-gray-300 dark:bg-gray-600'
-                              }`}>
-                                {phase.status === 'completed' && (
-                                  <Check className="w-3 h-3 text-white m-0.5" />
-                                )}
-                                {phase.status === 'progress' && (
-                                  <div className="w-2 h-2 bg-white rounded-full m-1 animate-pulse"></div>
-                                )}
-                              </div>
-                              <span className="text-gray-700 dark:text-gray-300 text-sm">
-                                {phase.name}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                <div
+                  key={index}
+                  className={cn(
+                    "flex flex-col lg:border-r py-10 relative group/feature border-gray-200 dark:border-slate-700",
+                    (index === 0 || index === 3) && "lg:border-l border-gray-200 dark:border-slate-700",
+                    index < 3 && "lg:border-b border-gray-200 dark:border-slate-700"
+                  )}
+                >
+                  {index < 3 && (
+                    <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-primary-50 dark:from-primary-900/20 to-transparent pointer-events-none" />
+                  )}
+                  {index >= 3 && (
+                    <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-primary-50 dark:from-primary-900/20 to-transparent pointer-events-none" />
+                  )}
+                  <div className="mb-4 relative z-10 px-10 text-primary-600 dark:text-primary-400">
+                    <IconComponent className="w-8 h-8" />
                   </div>
+                  <div className="text-lg font-bold mb-2 relative z-10 px-10">
+                    <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-gray-300 dark:bg-gray-700 group-hover/feature:bg-primary-500 transition-all duration-200 origin-center" />
+                    <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-gray-800 dark:text-gray-100">
+                      {feature.title}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 relative z-10 px-10 mb-4">
+                    {feature.description}
+                  </p>
+                  {feature.example && (
+                    <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-4 mx-10 rounded-lg border border-green-200 dark:border-green-800 relative z-10">
+                      <p className="text-green-800 dark:text-green-300 font-medium text-sm">
+                        {feature.example}
+                      </p>
+                    </div>
+                  )}
+                  {feature.phases && (
+                    <div className="space-y-3 mt-4 relative z-10 px-10">
+                      {feature.phases.map((phase, phaseIndex) => (
+                        <div key={phaseIndex} className="flex items-center gap-3">
+                          <div className={`w-4 h-4 rounded-full flex-shrink-0 ${
+                            phase.status === 'completed' ? 'bg-green-500' :
+                            phase.status === 'progress' ? 'bg-yellow-500' : 'bg-gray-300 dark:bg-gray-600'
+                          }`}>
+                            {phase.status === 'completed' && (
+                              <Check className="w-3 h-3 text-white m-0.5" />
+                            )}
+                            {phase.status === 'progress' && (
+                              <div className="w-2 h-2 bg-white rounded-full m-1 animate-pulse"></div>
+                            )}
+                          </div>
+                          <span className="text-gray-700 dark:text-gray-300 text-sm">
+                            {phase.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               );
             })}
