@@ -98,34 +98,46 @@ const ClientHub = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="space-y-8">
-              <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-slate-700">
+              <div className="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 rounded-2xl p-4 shadow-2xl border border-purple-500/20">
                 <img 
                   src="/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png" 
                   alt="Dashboard Principal" 
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    filter: 'sepia(0.3) saturate(1.2) hue-rotate(240deg) brightness(0.9) contrast(1.1)'
+                  }}
                 />
               </div>
-              <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-slate-700">
+              <div className="bg-gradient-to-br from-purple-900 via-indigo-900 to-violet-900 rounded-2xl p-4 shadow-2xl border border-purple-500/20">
                 <img 
                   src="/lovable-uploads/41c83a3f-366e-497b-8828-1c5df8dfc1f6.png" 
                   alt="Centro de Ayuda" 
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    filter: 'sepia(0.3) saturate(1.2) hue-rotate(240deg) brightness(0.9) contrast(1.1)'
+                  }}
                 />
               </div>
             </div>
             <div className="space-y-8">
-              <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-slate-700">
+              <div className="bg-gradient-to-br from-violet-900 via-purple-900 to-fuchsia-900 rounded-2xl p-4 shadow-2xl border border-purple-500/20">
                 <img 
                   src="/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png" 
                   alt="Calendario" 
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    filter: 'sepia(0.3) saturate(1.2) hue-rotate(240deg) brightness(0.9) contrast(1.1)'
+                  }}
                 />
               </div>
-              <div className="bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-slate-700">
+              <div className="bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 rounded-2xl p-4 shadow-2xl border border-purple-500/20">
                 <img 
                   src="/lovable-uploads/2079ad8f-d5f2-46a7-b6c4-3883b4c97f5a.png" 
                   alt="Perfil de Usuario" 
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-auto rounded-lg opacity-90 hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    filter: 'sepia(0.3) saturate(1.2) hue-rotate(240deg) brightness(0.9) contrast(1.1)'
+                  }}
                 />
               </div>
             </div>
@@ -208,10 +220,10 @@ const ClientHub = () => {
             </h2>
             <div className="space-y-6">
               <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                "Después de 100+ implementaciones de IA, notamos que nuestros clientes más exitosos eran los que entendían exactamente qué estaba pasando en su proyecto. Los que fallaban eran los que se sentían 'en la oscuridad'."
+                "Después de 10+ implementaciones de IA, notamos que nuestros clientes más exitosos eran los que entendían exactamente qué estaba pasando en su proyecto porque eso derivaba en una mejor comunicación y una mejor implementación."
               </p>
               <p className="text-xl font-semibold text-primary-600 dark:text-primary-400">
-                "Client Hub elimina esa oscuridad. Tienes el mismo nivel de visibilidad que nosotros."
+                "Client Hub elimina las dudas. Tenés el mismo nivel de visibilidad que nosotros."
               </p>
             </div>
           </div>
@@ -256,7 +268,7 @@ const ClientHub = () => {
               (Súper Simple)
             </span>
           </h2>
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto flex justify-center">
             <Timeline
               items={[
                 {
@@ -300,7 +312,13 @@ const ClientHub = () => {
             "El Client Hub está incluido sin costo adicional en todas nuestras implementaciones de IA. Es nuestra forma de demostrar confianza total en nuestro trabajo."
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-primary-600 hover:bg-gray-50 px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg">
+            <Button 
+              size="lg" 
+              className="bg-white text-primary-600 hover:bg-gray-50 px-8 py-4 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
+              onClick={() => {
+                window.location.href = '/#agenda';
+              }}
+            >
               Solicitar Propuesta + Access Client Hub
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>

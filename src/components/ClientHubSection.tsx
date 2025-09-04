@@ -1,7 +1,10 @@
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const ClientHubSection = () => {
+  const navigate = useNavigate();
+  
   const benefits = [
     "Ve tu ROI mensual en tiempo real",
     "Accede a todos tus deliverables",
@@ -59,7 +62,7 @@ const ClientHubSection = () => {
 
             {/* CTA Button */}
             <Button 
-              onClick={() => window.location.href = '/client-hub'}
+              onClick={() => navigate('/client-hub')}
               className="bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105 shadow-lg"
               size="lg"
             >
