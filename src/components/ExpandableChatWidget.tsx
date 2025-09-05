@@ -55,10 +55,11 @@ export function ExpandableChatWidget() {
 
     try {
       // Send message to webhook
-      const response = await fetch('/api/send-message', {
+      const response = await fetch('https://koinluzxltubzxwdolzt.supabase.co/functions/v1/send-message', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtvaW5sdXp4bHR1Ynp4d2RvbHp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4MTgyMjksImV4cCI6MjA2NjM5NDIyOX0.tJoPy5HGxUMFh21AREn7Vc4DapV0oFiEGIDb2rHo3Pc'}`,
         },
         body: JSON.stringify({
           message: input,

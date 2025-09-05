@@ -12,7 +12,7 @@ import FAQs from '../components/FAQs';
 import ContactCTA from '../components/ContactCTA';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
-import ChatwootLoader from '../components/ChatwootLoader';
+import { ExpandableChatWidget } from '../components/ExpandableChatWidget';
 
 const Index = () => {
   return (
@@ -30,7 +30,7 @@ const Index = () => {
       <FAQs />
       <Newsletter />
       <Footer />
-      <ChatwootLoader />
+      <ExpandableChatWidget />
     </div>
   );
 };
