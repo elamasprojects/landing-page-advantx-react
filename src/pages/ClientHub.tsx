@@ -98,7 +98,7 @@ const ClientHub = () => {
       {/* Dashboard Images Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center mb-16">
             <GlareCard className="flex items-center justify-center">
               <img 
                 src="/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png" 
@@ -117,13 +117,6 @@ const ClientHub = () => {
               <img 
                 src="/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png" 
                 alt="Calendario" 
-                className="w-full h-full object-cover"
-              />
-            </GlareCard>
-            <GlareCard className="flex items-center justify-center">
-              <img 
-                src="/lovable-uploads/2079ad8f-d5f2-46a7-b6c4-3883b4c97f5a.png" 
-                alt="Perfil de Usuario" 
                 className="w-full h-full object-cover"
               />
             </GlareCard>
