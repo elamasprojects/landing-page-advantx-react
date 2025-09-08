@@ -1,6 +1,7 @@
 import { Check, ArrowRight, Shield, Clock, DollarSign, BarChart3, Calendar, FolderOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Timeline } from '@/components/ui/timeline';
+import { FeatureSteps } from '@/components/ui/feature-section';
 import { cn } from "@/lib/utils";
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -94,29 +95,32 @@ const ClientHub = () => {
         </div>
       </section>
 
-      {/* Dashboard Images Section */}
+      {/* Dashboard Steps Section */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-12 justify-items-center mb-16 px-4 w-full">
-            <img 
-              src="/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png" 
-              alt="Dashboard Principal" 
-              className="w-4/5 h-64 object-contain rounded-lg shadow-2xl transform perspective-1000 rotate-x-2 rotate-y-1 hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out animate-float"
-            />
-            <img 
-              src="/lovable-uploads/41c83a3f-366e-497b-8828-1c5df8dfc1f6.png" 
-              alt="Centro de Ayuda" 
-              className="w-4/5 h-64 object-contain rounded-lg shadow-2xl transform perspective-1000 rotate-x-1 -rotate-y-1 hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out animate-float"
-              style={{ animationDelay: '1s' }}
-            />
-            <img 
-              src="/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png" 
-              alt="Calendario" 
-              className="w-4/5 h-64 object-contain rounded-lg shadow-2xl transform perspective-1000 -rotate-x-1 rotate-y-2 hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out animate-float"
-              style={{ animationDelay: '2s' }}
-            />
-          </div>
-        </div>
+        <FeatureSteps 
+          features={[
+            { 
+              step: 'Paso 1', 
+              title: 'Dashboard Principal - Control Total',
+              content: 'Accede a tu dashboard personalizado donde puedes ver el progreso de tu proyecto de IA, ROI en tiempo real, y todas las métricas clave de tu implementación.', 
+              image: '/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png'
+            },
+            { 
+              step: 'Paso 2',
+              title: 'Calendario - Scheduling Sin Fricción',
+              content: 'Programa reuniones y consultas directamente desde tu portal. Un click y eliges el horario que te conviene, sin emails de ida y vuelta.',
+              image: '/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png'
+            },
+            { 
+              step: 'Paso 3',
+              title: 'Centro de Ayuda - Soporte 24/7',
+              content: 'Accede al centro de ayuda integrado con documentación completa, FAQs específicas de tu proyecto, y soporte instantáneo las 24 horas.',
+              image: '/lovable-uploads/41c83a3f-366e-497b-8828-1c5df8dfc1f6.png'
+            },
+          ]}
+          title="Tu Portal de Proyecto en 3 Pasos"
+          autoPlayInterval={4000}
+        />
       </section>
 
       {/* Features Section */}
