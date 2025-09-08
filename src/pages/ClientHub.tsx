@@ -1,7 +1,6 @@
 import { Check, ArrowRight, Shield, Clock, DollarSign, BarChart3, Calendar, FolderOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Timeline } from '@/components/ui/timeline';
-import { GlareCard } from '@/components/ui/glare-card';
 import { cn } from "@/lib/utils";
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -99,27 +98,23 @@ const ClientHub = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 justify-items-center mb-16 px-4 w-full">
-            <GlareCard className="flex items-center justify-center w-4/5 h-64 transform perspective-1000 rotate-x-2 rotate-y-1 shadow-2xl hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out">
-              <img 
-                src="/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png" 
-                alt="Dashboard Principal" 
-                className="w-full h-full object-contain rounded-lg"
-              />
-            </GlareCard>
-            <GlareCard className="flex items-center justify-center w-4/5 h-64 transform perspective-1000 rotate-x-1 -rotate-y-1 shadow-2xl hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out">
-              <img 
-                src="/lovable-uploads/41c83a3f-366e-497b-8828-1c5df8dfc1f6.png" 
-                alt="Centro de Ayuda" 
-                className="w-full h-full object-contain rounded-lg"
-              />
-            </GlareCard>
-            <GlareCard className="flex items-center justify-center w-4/5 h-64 transform perspective-1000 -rotate-x-1 rotate-y-2 shadow-2xl hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out">
-              <img 
-                src="/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png" 
-                alt="Calendario" 
-                className="w-full h-full object-contain rounded-lg"
-              />
-            </GlareCard>
+            <img 
+              src="/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png" 
+              alt="Dashboard Principal" 
+              className="w-4/5 h-64 object-contain rounded-lg shadow-2xl transform perspective-1000 rotate-x-2 rotate-y-1 hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out animate-float"
+            />
+            <img 
+              src="/lovable-uploads/41c83a3f-366e-497b-8828-1c5df8dfc1f6.png" 
+              alt="Centro de Ayuda" 
+              className="w-4/5 h-64 object-contain rounded-lg shadow-2xl transform perspective-1000 rotate-x-1 -rotate-y-1 hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out animate-float"
+              style={{ animationDelay: '1s' }}
+            />
+            <img 
+              src="/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png" 
+              alt="Calendario" 
+              className="w-4/5 h-64 object-contain rounded-lg shadow-2xl transform perspective-1000 -rotate-x-1 rotate-y-2 hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out animate-float"
+              style={{ animationDelay: '2s' }}
+            />
           </div>
         </div>
       </section>
