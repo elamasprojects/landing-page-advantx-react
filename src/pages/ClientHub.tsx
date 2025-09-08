@@ -98,22 +98,22 @@ const ClientHub = () => {
       {/* Dashboard Images Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 justify-items-center mb-16 px-4">
-            <GlareCard className="flex items-center justify-center w-full max-w-sm h-80 transform perspective-1000 rotate-x-2 rotate-y-1 shadow-2xl hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out">
+          <div className="grid grid-cols-1 gap-12 justify-items-center mb-16 px-4 max-w-4xl mx-auto">
+            <GlareCard className="flex items-center justify-center w-full h-64 transform perspective-1000 rotate-x-2 rotate-y-1 shadow-2xl hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out">
               <img 
                 src="/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png" 
                 alt="Dashboard Principal" 
                 className="w-full h-full object-contain rounded-lg"
               />
             </GlareCard>
-            <GlareCard className="flex items-center justify-center w-full max-w-sm h-80 transform perspective-1000 rotate-x-1 -rotate-y-1 shadow-2xl hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out">
+            <GlareCard className="flex items-center justify-center w-full h-64 transform perspective-1000 rotate-x-1 -rotate-y-1 shadow-2xl hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out">
               <img 
                 src="/lovable-uploads/41c83a3f-366e-497b-8828-1c5df8dfc1f6.png" 
                 alt="Centro de Ayuda" 
                 className="w-full h-full object-contain rounded-lg"
               />
             </GlareCard>
-            <GlareCard className="flex items-center justify-center w-full max-w-sm h-80 transform perspective-1000 -rotate-x-1 rotate-y-2 shadow-2xl hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out">
+            <GlareCard className="flex items-center justify-center w-full h-64 transform perspective-1000 -rotate-x-1 rotate-y-2 shadow-2xl hover:rotate-x-0 hover:rotate-y-0 hover:scale-105 transition-all duration-500 ease-out">
               <img 
                 src="/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png" 
                 alt="Calendario" 
