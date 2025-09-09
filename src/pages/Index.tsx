@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import ProcessSteps from '../components/ProcessSteps';
 // import AutomationAssessment from '../components/AutomationAssessment';
+import { IntegrationsSection } from '../components/IntegrationsSection';
 import Services from '../components/Services';
 import ClientHubSection from '../components/ClientHubSection';
 import ROICalculator from '../components/ROICalculator';
@@ -21,6 +22,7 @@ const Index = () => {
       <Hero />
       <ProcessSteps />
       {/** <AutomationAssessment /> */}
+      <IntegrationsSection />
       <Services />
       <ClientHubSection />
       <ROICalculator />
