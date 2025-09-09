@@ -102,13 +102,13 @@ const ClientHub = () => {
             { 
               step: 'Paso 1', 
               title: 'Dashboard Principal - Control Total',
-              content: 'Accede a tu dashboard personalizado donde puedes ver el progreso de tu proyecto de IA, ROI en tiempo real, y todas las métricas clave de tu implementación.', 
+              content: 'Tu centro de comando con ROI en tiempo real, métricas clave del proyecto, y quick actions para agendar reuniones y acceder a deliverables al instante.', 
               image: '/lovable-uploads/5633f4f3-c1ba-40fc-ac88-fb902ec792d5.png'
             },
             { 
               step: 'Paso 2',
-              title: 'Calendario - Scheduling Sin Fricción',
-              content: 'Programa reuniones y consultas directamente desde tu portal. Un click y eliges el horario que te conviene, sin emails de ida y vuelta.',
+              title: 'Vista Calendario - Fases y Deliverables',
+              content: 'Visualiza todas las fases de tu proyecto y deliverables en formato calendario intuitivo. Ve fechas de entrega, milestones completados y próximos hitos.',
               image: '/lovable-uploads/6df305a4-59b6-41f9-b5b4-145f9a844925.png'
             },
             { 

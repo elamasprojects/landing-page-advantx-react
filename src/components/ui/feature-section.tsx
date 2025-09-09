@@ -67,11 +67,7 @@ export function FeatureSteps({
                       : "bg-muted border-muted-foreground",
                   )}
                 >
-                  {index <= currentFeature ? (
-                    <span className="text-lg font-bold">✓</span>
-                  ) : (
-                    <span className="text-lg font-semibold">{index + 1}</span>
-                  )}
+                  <span className="text-lg font-semibold">{index + 1}</span>
                 </motion.div>
 
                 <div className="flex-1">
@@ -88,8 +84,11 @@ export function FeatureSteps({
 
           <div
             className={cn(
-              "order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-lg"
+              "order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-purple-500/20"
             )}
+            style={{
+              boxShadow: '0 0 40px rgba(147, 51, 234, 0.3), 0 20px 40px rgba(0, 0, 0, 0.1)'
+            }}
           >
             <AnimatePresence mode="wait">
               {features.map(
@@ -97,7 +96,7 @@ export function FeatureSteps({
                   index === currentFeature && (
                     <motion.div
                       key={index}
-                      className="absolute inset-0 rounded-lg overflow-hidden"
+                      className="absolute inset-0 rounded-2xl overflow-hidden"
                       initial={{ y: 100, opacity: 0, rotateX: -20 }}
                       animate={{ y: 0, opacity: 1, rotateX: 0 }}
                       exit={{ y: -100, opacity: 0, rotateX: 20 }}
@@ -108,7 +107,6 @@ export function FeatureSteps({
                         alt={feature.step}
                         className="w-full h-full object-contain transition-transform transform"
                       />
-                      <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background via-background/50 to-transparent" />
                     </motion.div>
                   ),
               )}
