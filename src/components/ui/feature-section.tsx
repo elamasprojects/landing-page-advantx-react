@@ -84,7 +84,7 @@ export function FeatureSteps({
 
           <div
             className={cn(
-              "order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-purple-500/20"
+              "order-1 md:order-2 relative w-full aspect-[16/10] max-h-[500px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-purple-500/20"
             )}
             style={{
               boxShadow: '0 0 40px rgba(147, 51, 234, 0.3), 0 20px 40px rgba(0, 0, 0, 0.1)'
@@ -96,7 +96,7 @@ export function FeatureSteps({
                   index === currentFeature && (
                     <motion.div
                       key={index}
-                      className="absolute inset-0 rounded-2xl overflow-hidden"
+                      className="absolute inset-0 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900"
                       initial={{ y: 100, opacity: 0, rotateX: -20 }}
                       animate={{ y: 0, opacity: 1, rotateX: 0 }}
                       exit={{ y: -100, opacity: 0, rotateX: 20 }}
@@ -105,7 +105,7 @@ export function FeatureSteps({
                       <img
                         src={feature.image}
                         alt={feature.step}
-                        className="w-full h-full object-contain transition-transform transform"
+                        className="w-full h-full object-cover transition-transform transform hover:scale-105"
                       />
                     </motion.div>
                   ),
