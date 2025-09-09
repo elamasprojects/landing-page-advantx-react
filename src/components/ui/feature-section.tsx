@@ -82,14 +82,7 @@ export function FeatureSteps({
             ))}
           </div>
 
-          <div
-            className={cn(
-              "order-1 md:order-2 relative w-full min-h-[300px] max-h-[600px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-purple-500/20 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900"
-            )}
-            style={{
-              boxShadow: '0 0 40px rgba(147, 51, 234, 0.3), 0 20px 40px rgba(0, 0, 0, 0.1)'
-            }}
-          >
+          <div className="order-1 md:order-2 relative w-full min-h-[300px] max-h-[600px] flex items-center justify-center">
             <AnimatePresence mode="wait">
               {features.map(
                 (feature, index) =>
@@ -105,7 +98,10 @@ export function FeatureSteps({
                       <img
                         src={feature.image}
                         alt={feature.step}
-                        className="max-w-full max-h-full object-contain rounded-xl shadow-lg transition-transform transform hover:scale-[1.02]"
+                        className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl ring-1 ring-purple-500/20 transition-transform transform hover:scale-[1.02]"
+                        style={{
+                          boxShadow: '0 0 40px rgba(147, 51, 234, 0.3), 0 20px 40px rgba(0, 0, 0, 0.1)'
+                        }}
                       />
                     </motion.div>
                   ),
