@@ -249,7 +249,7 @@ const ContactCTA = () => {
                 <CardContent className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Mail className="w-5 h-5 text-primary-600" />
-                    <span className="dark:text-gray-300">contacto@advantx.com</span>
+                    <span className="dark:text-gray-300">contacto@advantx.co</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-primary-600" />
