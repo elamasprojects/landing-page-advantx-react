@@ -130,16 +130,18 @@ const ExpandableChatToggle: React.FC<ExpandableChatToggleProps> = ({
     type="button"
     onClick={toggleChat}
     className={cn(
-      "rounded-full shadow-md hover:shadow-lg hover:shadow-black/30 transition-all duration-300",
+      "rounded-full shadow-md hover:shadow-lg hover:shadow-black/30 transition-all duration-300 flex items-center justify-center",
       // Base size roughly 25% larger than previous 56px (w-14 h-14)
       // 56px * 1.25 = 70px -> use w-[70px] h-[70px]
       "w-[70px] h-[70px]",
+      // When open, show a violet background and white X centered
+      isOpen && "bg-primary-600 text-white",
       className,
     )}
     {...props}
   >
     {isOpen ? (
-      <X className="h-6 w-6" />
+      <X className="h-7 w-7" />
     ) : (
       // If an icon node is provided (e.g., an <img />), render it full-size to act as the button
       icon ? (
