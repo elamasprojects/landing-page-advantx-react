@@ -36,24 +36,31 @@ export function ExpandableChatWidget() {
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
     try {
-      // Send message to webhook
-      const response = await fetch('https://koinluzxltubzxwdolzt.supabase.co/functions/v1/send-message', {
+      // Send message directly to webhook and await reply
+      const response = await fetch('https://devwebhookn8n.ezequiellamas.com/webhook/d1be5928-d6ee-45d4-858b-126edf0e7582', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtvaW5sdXp4bHR1Ynp4d2RvbHp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA4MTgyMjksImV4cCI6MjA2NjM5NDIyOX0.tJoPy5HGxUMFh21AREn7Vc4DapV0oFiEGIDb2rHo3Pc'}`
         },
         body: JSON.stringify({
           message: value,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
+          source: 'website_chat'
         })
       });
       if (!response.ok) {
         throw new Error('Failed to send message');
       }
-      // Read webhook reply from the edge function response
-      const result = await response.json().catch(() => ({} as any));
-      const reply: string = (result?.reply ?? result?.message ?? result?.text ?? "").toString();
+      // Read webhook reply (supports JSON or plain text)
+      const contentType = response.headers.get('content-type') || '';
+      let reply = '';
+      if (contentType.includes('application/json')) {
+        const result = await response.json().catch(() => ({} as any));
+        const candidates = [result?.reply, result?.message, result?.text].filter(v => typeof v === 'string');
+        reply = (candidates[0] as string | undefined) ?? JSON.stringify(result);
+      } else {
+        reply = await response.text();
+      }
       const fallback = "Gracias por tu mensaje. Te contactaremos pronto.";
       const aiResponse: Message = {
         id: messages.length + 2,
@@ -79,7 +86,7 @@ export function ExpandableChatWidget() {
   const handleMicrophoneClick = () => {
     // Voice recording functionality
   };
-  return <ExpandableChat size="lg" position="bottom-right" icon={<img src="/avatar.png" alt="AI" className="h-6 w-6 rounded-full" />}>
+  return <ExpandableChat size="lg" position="bottom-right" icon={<img src="/avatar.png" alt="AI" className="h-6 w-6 rounded-full object-cover" />}>
       <ExpandableChatHeader className="flex-col text-center justify-center">
         <h1 className="text-xl font-semibold">Chatea con la IA de AdvantX </h1>
         <p className="text-sm text-muted-foreground">Averiguá cómo te podemos ayudar!</p>
@@ -88,7 +95,7 @@ export function ExpandableChatWidget() {
       <ExpandableChatBody>
         <ChatMessageList>
           {messages.map(message => <ChatBubble key={message.id} variant={message.sender === "user" ? "sent" : "received"}>
-              <ChatBubbleAvatar className="h-8 w-8 shrink-0" src={message.sender === "user" ? "/lovable-uploads/2079ad8f-d5f2-46a7-b6c4-3883b4c97f5a.png" : "/avatar.png"} fallback={message.sender === "user" ? "US" : "AI"} />
+              <ChatBubbleAvatar className="h-8 w-8 shrink-0" src={message.sender === "user" ? "/user.webp" : "/avatar.png"} fallback={message.sender === "user" ? "US" : "AI"} />
               <ChatBubbleMessage variant={message.sender === "user" ? "sent" : "received"}>
                 {message.content}
               </ChatBubbleMessage>
