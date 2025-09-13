@@ -126,11 +126,14 @@ const ExpandableChatToggle: React.FC<ExpandableChatToggleProps> = ({
   toggleChat,
   ...props
 }) => (
-  <Button
-    variant="default"
+  <button
+    type="button"
     onClick={toggleChat}
     className={cn(
-      "w-14 h-14 rounded-full shadow-md flex items-center justify-center hover:shadow-lg hover:shadow-black/30 transition-all duration-300",
+      "rounded-full shadow-md hover:shadow-lg hover:shadow-black/30 transition-all duration-300",
+      // Base size roughly 25% larger than previous 56px (w-14 h-14)
+      // 56px * 1.25 = 70px -> use w-[70px] h-[70px]
+      "w-[70px] h-[70px]",
       className,
     )}
     {...props}
@@ -138,9 +141,23 @@ const ExpandableChatToggle: React.FC<ExpandableChatToggleProps> = ({
     {isOpen ? (
       <X className="h-6 w-6" />
     ) : (
-      icon || <MessageCircle className="h-6 w-6" />
+      // If an icon node is provided (e.g., an <img />), render it full-size to act as the button
+      icon ? (
+        <div className="w-full h-full rounded-full overflow-hidden">
+          {/* Ensure the provided icon fills the circle. If it's an <img>, object-cover will apply. */}
+          {React.isValidElement(icon) ? (
+            React.cloneElement(icon as React.ReactElement, {
+              className: cn("w-full h-full object-cover", (icon as any).props?.className),
+            })
+          ) : (
+            <MessageCircle className="h-6 w-6" />
+          )}
+        </div>
+      ) : (
+        <MessageCircle className="h-6 w-6" />
+      )
     )}
-  </Button>
+  </button>
 );
 
 ExpandableChatToggle.displayName = "ExpandableChatToggle";
