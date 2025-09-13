@@ -51,24 +51,51 @@ export function ExpandableChatWidget() {
       if (!response.ok) {
         throw new Error('Failed to send message');
       }
-      // Read webhook reply (supports JSON or plain text)
+      // Read webhook reply (supports array of JSON objects with "output.respuesta" keys)
       const contentType = response.headers.get('content-type') || '';
-      let reply = '';
+      let newMessages: Message[] = [];
+      const fallback = "Gracias por tu mensaje. Te contactaremos pronto.";
       if (contentType.includes('application/json')) {
         const result = await response.json().catch(() => ({} as any));
-        const candidates = [result?.reply, result?.message, result?.text].filter(v => typeof v === 'string');
-        reply = (candidates[0] as string | undefined) ?? JSON.stringify(result);
+        if (Array.isArray(result)) {
+          // Example format: [{"output.respuesta":"Hola"}, ...]
+          for (const item of result) {
+            let text = "";
+            if (item && typeof item === 'object') {
+              // Support both nested and flat key variations
+              text =
+                (item['output.respuesta'] as string | undefined) ??
+                (item.output?.respuesta as string | undefined) ??
+                (item.respuesta as string | undefined) ??
+                "";
+            }
+            newMessages.push({
+              id: (messages.length + 1) + newMessages.length + 1,
+              content: (text && text.trim().length > 0) ? text : fallback,
+              sender: "ai",
+              timestamp: new Date(),
+            });
+          }
+        } else {
+          const candidates = [result?.reply, result?.message, result?.text].filter(v => typeof v === 'string');
+          const reply = (candidates[0] as string | undefined) ?? JSON.stringify(result);
+          newMessages.push({
+            id: messages.length + 2,
+            content: reply && reply.trim().length > 0 ? reply : fallback,
+            sender: "ai",
+            timestamp: new Date(),
+          });
+        }
       } else {
-        reply = await response.text();
+        const text = await response.text();
+        newMessages.push({
+          id: messages.length + 2,
+          content: text && text.trim().length > 0 ? text : fallback,
+          sender: "ai",
+          timestamp: new Date(),
+        });
       }
-      const fallback = "Gracias por tu mensaje. Te contactaremos pronto.";
-      const aiResponse: Message = {
-        id: messages.length + 2,
-        content: reply && reply.trim().length > 0 ? reply : fallback,
-        sender: "ai",
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, aiResponse]);
+      setMessages(prev => [...prev, ...newMessages]);
     } catch (error) {
       console.error('Error sending message:', error);
       toast({
