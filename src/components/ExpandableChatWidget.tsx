@@ -51,11 +51,13 @@ export function ExpandableChatWidget() {
       if (!response.ok) {
         throw new Error('Failed to send message');
       }
-
-      // Add AI response
+      // Read webhook reply from the edge function response
+      const result = await response.json().catch(() => ({} as any));
+      const reply: string = (result?.reply ?? result?.message ?? result?.text ?? "").toString();
+      const fallback = "Gracias por tu mensaje. Te contactaremos pronto.";
       const aiResponse: Message = {
         id: messages.length + 2,
-        content: "Gracias por tu mensaje. Te contactaremos pronto.",
+        content: reply && reply.trim().length > 0 ? reply : fallback,
         sender: "ai",
         timestamp: new Date()
       };
@@ -77,7 +79,7 @@ export function ExpandableChatWidget() {
   const handleMicrophoneClick = () => {
     // Voice recording functionality
   };
-  return <ExpandableChat size="lg" position="bottom-right" icon={<Bot className="h-6 w-6" />}>
+  return <ExpandableChat size="lg" position="bottom-right" icon={<img src="/avatar.png" alt="AI" className="h-6 w-6 rounded-full" />}>
       <ExpandableChatHeader className="flex-col text-center justify-center">
         <h1 className="text-xl font-semibold">Chatea con la IA de AdvantX </h1>
         <p className="text-sm text-muted-foreground">Averiguá cómo te podemos ayudar!</p>
@@ -86,14 +88,14 @@ export function ExpandableChatWidget() {
       <ExpandableChatBody>
         <ChatMessageList>
           {messages.map(message => <ChatBubble key={message.id} variant={message.sender === "user" ? "sent" : "received"}>
-              <ChatBubbleAvatar className="h-8 w-8 shrink-0" src={message.sender === "user" ? "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=64&h=64&q=80&crop=faces&fit=crop" : "/favicon.png"} fallback={message.sender === "user" ? "US" : "AI"} />
+              <ChatBubbleAvatar className="h-8 w-8 shrink-0" src={message.sender === "user" ? "/lovable-uploads/2079ad8f-d5f2-46a7-b6c4-3883b4c97f5a.png" : "/avatar.png"} fallback={message.sender === "user" ? "US" : "AI"} />
               <ChatBubbleMessage variant={message.sender === "user" ? "sent" : "received"}>
                 {message.content}
               </ChatBubbleMessage>
             </ChatBubble>)}
 
           {isLoading && <ChatBubble variant="received">
-              <ChatBubbleAvatar className="h-8 w-8 shrink-0" src="/favicon.png" fallback="AI" />
+              <ChatBubbleAvatar className="h-8 w-8 shrink-0" src="/avatar.png" fallback="AI" />
               <ChatBubbleMessage isLoading />
             </ChatBubble>}
         </ChatMessageList>

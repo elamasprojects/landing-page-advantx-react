@@ -56,8 +56,30 @@ serve(async (req) => {
       throw new Error('Failed to send to webhook')
     }
 
+    // Try to forward the webhook's reply back to the client
+    const contentType = webhookResponse.headers.get('content-type') || ''
+    let reply: string | null = null
+    let data: unknown = null
+    try {
+      if (contentType.includes('application/json')) {
+        data = await webhookResponse.json()
+        const d = data as Record<string, unknown>
+        const possible = [d?.reply, d?.message, d?.text]
+        const firstString = possible.find(v => typeof v === 'string') as string | undefined
+        reply = firstString ?? JSON.stringify(d)
+      } else {
+        reply = await webhookResponse.text()
+      }
+    } catch (_e) {
+      try {
+        reply = await webhookResponse.text()
+      } catch {
+        reply = null
+      }
+    }
+
     return new Response(
-      JSON.stringify({ success: true, message: 'Message sent successfully' }),
+      JSON.stringify({ success: true, reply, data }),
       { 
         status: 200, 
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
