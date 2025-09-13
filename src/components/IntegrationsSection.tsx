@@ -37,7 +37,7 @@ export function IntegrationsSection() {
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16">
-          Conectamos todas tus herramientas
+          Conectamos todas tus <span className="bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent">herramientas</span>
         </h2>
         
         <div
