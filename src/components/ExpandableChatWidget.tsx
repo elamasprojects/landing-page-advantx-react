@@ -113,7 +113,7 @@ export function ExpandableChatWidget() {
   const handleMicrophoneClick = () => {
     // Voice recording functionality
   };
-  return <ExpandableChat size="lg" position="bottom-right" icon={<img src="/avatar.png" alt="AI" className="h-6 w-6 rounded-full object-cover" />}>
+  return <ExpandableChat size="lg" position="bottom-right" icon={<img src="/avatar.png" alt="AI" className="h-6 w-6 rounded-full object-cover object-center block min-w-full min-h-full" />}>
       <ExpandableChatHeader className="flex-col text-center justify-center">
         <h1 className="text-xl font-semibold">Chatea con la IA de AdvantX </h1>
         <p className="text-sm text-muted-foreground">Averiguá cómo te podemos ayudar!</p>
@@ -122,7 +122,9 @@ export function ExpandableChatWidget() {
       <ExpandableChatBody>
         <ChatMessageList>
           {messages.map(message => <ChatBubble key={message.id} variant={message.sender === "user" ? "sent" : "received"}>
-              <ChatBubbleAvatar className="h-8 w-8 shrink-0" src={message.sender === "user" ? "/user.webp" : "/avatar.png"} fallback={message.sender === "user" ? "US" : "AI"} />
+              {message.sender !== "user" && (
+                <ChatBubbleAvatar className="h-8 w-8 shrink-0" src="/avatar.png" fallback="AI" />
+              )}
               <ChatBubbleMessage variant={message.sender === "user" ? "sent" : "received"}>
                 {message.content}
               </ChatBubbleMessage>
