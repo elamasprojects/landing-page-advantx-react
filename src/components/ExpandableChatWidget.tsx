@@ -58,16 +58,21 @@ export function ExpandableChatWidget() {
       if (contentType.includes('application/json')) {
         const result = await response.json().catch(() => ({} as any));
         if (Array.isArray(result)) {
-          // Example format: [{"output.respuesta":"Hola"}, ...]
+          // New format: [{"output": {"respuesta": ["Text message"]}}]
           for (const item of result) {
             let text = "";
             if (item && typeof item === 'object') {
-              // Support both nested and flat key variations
-              text =
-                (item['output.respuesta'] as string | undefined) ??
-                (item.output?.respuesta as string | undefined) ??
-                (item.respuesta as string | undefined) ??
-                "";
+              // Handle new nested format: item.output.respuesta (array)
+              if (item.output?.respuesta && Array.isArray(item.output.respuesta)) {
+                text = item.output.respuesta[0] || "";
+              } else {
+                // Support legacy formats as fallback
+                text =
+                  (item['output.respuesta'] as string | undefined) ??
+                  (item.output?.respuesta as string | undefined) ??
+                  (item.respuesta as string | undefined) ??
+                  "";
+              }
             }
             newMessages.push({
               id: (messages.length + 1) + newMessages.length + 1,
@@ -113,7 +118,7 @@ export function ExpandableChatWidget() {
   const handleMicrophoneClick = () => {
     // Voice recording functionality
   };
-  return <ExpandableChat size="lg" position="bottom-right" icon={<img src="/avatar.png" alt="AI" className="h-6 w-6 rounded-full object-cover object-center block min-w-full min-h-full" />}>
+  return <ExpandableChat size="lg" position="bottom-right" icon={<img src="/avatar-new.png" alt="AI" className="h-6 w-6 rounded-full object-cover object-center block min-w-full min-h-full" />}>
       <ExpandableChatHeader className="flex-col text-center justify-center">
         <h1 className="text-xl font-semibold">Chatea con la IA de AdvantX </h1>
         <p className="text-sm text-muted-foreground">Averiguá cómo te podemos ayudar!</p>
@@ -121,9 +126,9 @@ export function ExpandableChatWidget() {
 
       <ExpandableChatBody>
         <ChatMessageList>
-          {messages.map(message => <ChatBubble key={message.id} variant={message.sender === "user" ? "sent" : "received"}>
+            {messages.map(message => <ChatBubble key={message.id} variant={message.sender === "user" ? "sent" : "received"}>
               {message.sender !== "user" && (
-                <ChatBubbleAvatar className="h-8 w-8 shrink-0" src="/avatar.png" fallback="AI" />
+                <ChatBubbleAvatar className="h-8 w-8 shrink-0" src="/avatar-new.png" fallback="AI" />
               )}
               <ChatBubbleMessage variant={message.sender === "user" ? "sent" : "received"}>
                 {message.content}
@@ -131,7 +136,7 @@ export function ExpandableChatWidget() {
             </ChatBubble>)}
 
           {isLoading && <ChatBubble variant="received">
-              <ChatBubbleAvatar className="h-8 w-8 shrink-0" src="/avatar.png" fallback="AI" />
+              <ChatBubbleAvatar className="h-8 w-8 shrink-0" src="/avatar-new.png" fallback="AI" />
               <ChatBubbleMessage isLoading />
             </ChatBubble>}
         </ChatMessageList>
@@ -142,6 +147,7 @@ export function ExpandableChatWidget() {
           placeholder="Escribe tu mensaje..." 
           onSubmit={handleAISubmit}
           className="py-0"
+          disabled={isLoading}
         />
       </ExpandableChatFooter>
     </ExpandableChat>;

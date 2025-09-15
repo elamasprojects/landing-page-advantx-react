@@ -13,6 +13,7 @@ interface AIInputProps {
   maxHeight?: number
   onSubmit?: (value: string) => void
   className?: string
+  disabled?: boolean
 }
 
 export function AIInput({
@@ -21,7 +22,8 @@ export function AIInput({
   minHeight = 52,
   maxHeight = 200,
   onSubmit,
-  className
+  className,
+  disabled = false
 }: AIInputProps) {
   const { textareaRef, adjustHeight } = useAutoResizeTextarea({
     minHeight,
@@ -30,7 +32,7 @@ export function AIInput({
   const [inputValue, setInputValue] = useState("");
 
   const handleReset = () => {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim() || disabled) return;
     onSubmit?.(inputValue);
     setInputValue("");
     adjustHeight(true);
@@ -42,6 +44,7 @@ export function AIInput({
         <Textarea
           id={id}
           placeholder={placeholder}
+          disabled={disabled}
           className={cn(
             "max-w-xl bg-black/5 dark:bg-white/5 rounded-3xl pl-6 pr-16",
             "placeholder:text-black/50 dark:placeholder:text-white/50",
@@ -53,16 +56,19 @@ export function AIInput({
             "leading-[1.2] py-[16px]",
             `min-h-[${minHeight}px]`,
             `max-h-[${maxHeight}px]`,
-            "[&::-webkit-resizer]:hidden"
+            "[&::-webkit-resizer]:hidden",
+            disabled && "opacity-50 cursor-not-allowed"
           )}
           ref={textareaRef}
           value={inputValue}
           onChange={(e) => {
-            setInputValue(e.target.value);
-            adjustHeight();
+            if (!disabled) {
+              setInputValue(e.target.value);
+              adjustHeight();
+            }
           }}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) {
+            if (e.key === "Enter" && !e.shiftKey && !disabled) {
               e.preventDefault();
               handleReset();
             }
@@ -72,7 +78,8 @@ export function AIInput({
         <div
           className={cn(
             "absolute top-1/2 -translate-y-1/2 rounded-xl bg-black/5 dark:bg-white/5 py-1 px-1 transition-all duration-200",
-            inputValue ? "right-10" : "right-3"
+            inputValue ? "right-10" : "right-3",
+            disabled && "opacity-50"
           )}
         >
           <Mic className="w-4 h-4 text-black/70 dark:text-white/70" />
@@ -80,13 +87,15 @@ export function AIInput({
        <button
   onClick={handleReset}
   type="button"
+  disabled={disabled}
   className={cn(
     "absolute top-1/2 -translate-y-1/2 right-3",
     "rounded-xl bg-black/5 dark:bg-white/5 py-1 px-1",
     "transition-all duration-200",
-    inputValue 
+    inputValue && !disabled
       ? "opacity-100 scale-100" 
-      : "opacity-0 scale-95 pointer-events-none"
+      : "opacity-0 scale-95 pointer-events-none",
+    disabled && "cursor-not-allowed"
   )}
 >
   <CornerRightUp className="w-4 h-4 text-black/70 dark:text-white/70" />
