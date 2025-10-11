@@ -12,6 +12,7 @@ import ROICalculator from '../components/ROICalculator';
 import FAQs from '../components/FAQs';
 import ContactCTA from '../components/ContactCTA';
 import Newsletter from '../components/Newsletter';
+import HiringCTA from '../components/HiringCTA';
 import Footer from '../components/Footer';
 // import { ExpandableChatWidget } from '../components/ExpandableChatWidget';
 
@@ -31,6 +32,7 @@ const Index = () => {
       <ContactCTA />
       <FAQs />
       <Newsletter />
+      <HiringCTA />
       <Footer />
       {/* <ExpandableChatWidget /> */}
     </div>
